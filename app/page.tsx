@@ -64,9 +64,13 @@ export default function Page() {
               Roadmap
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
             </Link>
-            <Link className="text-xs md:text-sm font-medium text-white/90 hover:text-white transition-colors relative group" href="/community">
-              Community
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+            <Link href="/community">
+              <Button 
+                variant="outline" 
+                className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
+              >
+                Join Community
+              </Button>
             </Link>
             <Button 
               className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group relative overflow-hidden text-xs md:text-sm px-3 md:px-4 h-8 md:h-10"
@@ -99,15 +103,19 @@ export default function Page() {
               Goatseus Aurelius (GOTA) is a community-driven cryptocurrency built on principles of resilience, humor, and the enduring strength of the herd.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in-delayed-more">
-              <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group w-full sm:w-auto">
-                Explore White Paper
-              </Button>
-              <Button 
-                variant="outline" 
-                className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
-              >
-                Join Community
-              </Button>
+              <Link href="/whitepaper">
+                <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group w-full sm:w-auto">
+                  Explore White Paper
+                </Button>
+              </Link>
+              <Link href="/community">
+                <Button 
+                  variant="outline" 
+                  className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
+                >
+                  Join Community
+                </Button>
+              </Link>
             </div>
             <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-delayed-more">
               <Link href="https://dexscreener.com" target="_blank" rel="noopener noreferrer">

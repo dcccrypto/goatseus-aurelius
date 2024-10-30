@@ -1,4 +1,7 @@
 declare module '@/components/ui/button'
 declare module '@/components/ui/card'
 declare module '@/components/ui/progress'
-declare module '@/components/ui/tabs' 
+declare module '@/components/ui/tabs'
+declare module '@/components/ui/page-transition'
+declare module '@/components/ui/back-button'
+declare module '@/components/ui/navigation-header' 
