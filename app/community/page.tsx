@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { PageTransition } from "@/components/ui/page-transition"
 import { BackButton } from "@/components/ui/back-button"
 import { NavigationHeader } from "@/components/ui/navigation-header"
@@ -66,12 +66,9 @@ export default function CommunityPage() {
             >
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
-                  <CardHeader className="text-center pb-4">
-                    <div className="mx-auto rounded-full bg-purple-700/50 w-16 h-16 flex items-center justify-center mb-4">
-                      <Twitter className="h-8 w-8 text-white" />
-                    </div>
-                    <CardTitle className="text-white text-xl">X.com</CardTitle>
-                  </CardHeader>
+                  <div className="p-6 space-y-1.5">
+                    <h3 className="text-2xl font-semibold">X.com</h3>
+                  </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Follow us for the latest updates, announcements, and community highlights</p>
                     <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
@@ -83,12 +80,9 @@ export default function CommunityPage() {
 
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
-                  <CardHeader className="text-center pb-4">
-                    <div className="mx-auto rounded-full bg-purple-700/50 w-16 h-16 flex items-center justify-center mb-4">
-                      <Send className="h-8 w-8 text-white" />
-                    </div>
-                    <CardTitle className="text-white text-xl">Telegram</CardTitle>
-                  </CardHeader>
+                  <div className="p-6 space-y-1.5">
+                    <h3 className="text-2xl font-semibold">Telegram</h3>
+                  </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Join our Telegram for real-time discussions, support, and community updates</p>
                     <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
@@ -100,12 +94,9 @@ export default function CommunityPage() {
 
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
-                  <CardHeader className="text-center pb-4">
-                    <div className="mx-auto rounded-full bg-purple-700/50 w-16 h-16 flex items-center justify-center mb-4">
-                      <Video className="h-8 w-8 text-white" />
-                    </div>
-                    <CardTitle className="text-white text-xl">TikTok</CardTitle>
-                  </CardHeader>
+                  <div className="p-6 space-y-1.5">
+                    <h3 className="text-2xl font-semibold">TikTok</h3>
+                  </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Follow our TikTok for engaging content and community highlights</p>
                     <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
