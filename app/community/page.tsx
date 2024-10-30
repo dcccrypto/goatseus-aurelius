@@ -72,7 +72,7 @@ export default function CommunityPage() {
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Follow us for the latest updates, announcements, and community highlights</p>
-                    <Link href="https://x.com" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://x.com/GOTAGOAT1" target="_blank" rel="noopener noreferrer">
                       <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
                         Follow on X
                       </Button>
@@ -88,7 +88,7 @@ export default function CommunityPage() {
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Join our Telegram for real-time discussions, support, and community updates</p>
-                    <Link href="https://t.me" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://t.me/goatAURELIUS" target="_blank" rel="noopener noreferrer">
                       <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
                         Join Telegram
                       </Button>
@@ -104,7 +104,7 @@ export default function CommunityPage() {
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Follow our TikTok for engaging content and community highlights</p>
-                    <Link href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://www.tiktok.com/@rum_burgundy" target="_blank" rel="noopener noreferrer">
                       <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
                         Follow TikTok
                       </Button>

@@ -7,6 +7,7 @@ import { BackButton } from "@/components/ui/back-button"
 import { NavigationHeader } from "@/components/ui/navigation-header"
 import { motion } from "framer-motion"
 import { Flag, Rocket, Users, Building, Target, Check, ArrowRight } from "lucide-react"
+import { Progress } from "@/components/ui/progress"
 
 export default function RoadmapPage() {
   const [activePhase, setActivePhase] = useState<number>(1)
@@ -61,6 +62,20 @@ export default function RoadmapPage() {
       color: "text-blue-400"
     }
   ]
+
+  const getProgressValue = (phase: number) => {
+    switch (phase) {
+      case 1:
+        return 100
+      case 2:
+        return 60
+      case 3:
+      case 4:
+        return 0
+      default:
+        return 0
+    }
+  }
 
   return (
     <PageTransition>
@@ -121,42 +136,84 @@ export default function RoadmapPage() {
               transition={{ duration: 0.3 }}
             >
               <Card className="bg-purple-800/20 border-purple-700">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center bg-purple-900/50`}>
-                      {phases[activePhase - 1].icon && (
-                        <div>
-                          {React.createElement(phases[activePhase - 1].icon, {
-                            className: "h-6 w-6 text-yellow-500"
-                          })}
+                <CardContent className="p-8">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center bg-purple-900/50">
+                          {phases[activePhase - 1].icon && (
+                            <div className="h-6 w-6 text-yellow-500">
+                              {React.createElement(phases[activePhase - 1].icon, {
+                                className: "h-6 w-6"
+                              })}
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                    <div className="space-y-1">
-                      <h2 className="text-2xl font-bold text-yellow-500">
-                        Phase {activePhase}: {phases[activePhase - 1].title}
-                      </h2>
-                      <p className={`text-sm ${phases[activePhase - 1].status === "Completed" ? "text-green-500" : phases[activePhase - 1].color}`}>
-                        {phases[activePhase - 1].status}
+                        <div>
+                          <h2 className="text-2xl font-bold text-yellow-500">
+                            Phase {activePhase}: {phases[activePhase - 1].title}
+                          </h2>
+                          <p className={`text-sm ${phases[activePhase - 1].color}`}>
+                            {phases[activePhase - 1].status}
+                          </p>
+                        </div>
+                      </div>
+                      <p className="text-purple-100 text-lg mb-6">
+                        {phases[activePhase - 1].description}
                       </p>
+                      <div className="space-y-4">
+                        {phases[activePhase - 1].items.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.2 }}
+                            className="flex items-start gap-3 text-purple-100"
+                          >
+                            <Check className="h-5 w-5 text-yellow-500 mt-1 flex-shrink-0" />
+                            <span>{item}</span>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <p className="text-purple-100 text-lg mb-6">
-                    {phases[activePhase - 1].description}
-                  </p>
-                  <div className="space-y-4">
-                    {phases[activePhase - 1].items.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.2 }}
-                        className="flex items-start gap-3 text-purple-100"
-                      >
-                        <Check className="h-5 w-5 text-yellow-500 mt-1 flex-shrink-0" />
-                        <span>{item}</span>
-                      </motion.div>
-                    ))}
+                    <div className="bg-purple-900/30 rounded-lg p-6">
+                      <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                        <Rocket className="h-5 w-5 mr-2 text-yellow-500" />
+                        Phase Progress
+                      </h3>
+                      <div className="space-y-6">
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm text-purple-100">Phase Progress</span>
+                            <span className="text-sm text-purple-100">
+                              {getProgressValue(activePhase)}%
+                            </span>
+                          </div>
+                          <Progress 
+                            value={getProgressValue(activePhase)}
+                            className="bg-purple-900"
+                            indicatorClassName="bg-yellow-500"
+                          />
+                        </div>
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 text-purple-100">
+                            <ArrowRight className="h-4 w-4 text-yellow-500" />
+                            <span className="text-sm">
+                              {activePhase === 1 ? "All objectives completed" :
+                               activePhase === 2 ? "Community building in progress" :
+                               activePhase === 3 ? "Preparing for expansion" :
+                               "Planning long-term strategy"}
+                            </span>
+                          </div>
+                          {activePhase === 2 && (
+                            <div className="flex items-center gap-2 text-purple-100">
+                              <ArrowRight className="h-4 w-4 text-yellow-500" />
+                              <span className="text-sm">Next: Exchange listings preparation</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>

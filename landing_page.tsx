@@ -1,17 +1,21 @@
 "use client"
-import React from "react"
+
+import React, { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Github, MessageSquare, Twitter } from "lucide-react"
+import { Github, MessageSquare, Twitter, Copy, ExternalLink, Check, DollarSign, Wallet, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useEffect } from "react"
 
 export default function Component() {
   const [activePhase, setActivePhase] = useState("1")
   const [scrolled, setScrolled] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const tickerRef = useRef<HTMLDivElement>(null)
+
+  const contractAddress = "Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +24,27 @@ export default function Component() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  useEffect(() => {
+    const ticker = tickerRef.current
+    if (ticker) {
+      const animateTicker = () => {
+        if (ticker.scrollLeft >= ticker.scrollWidth / 2) {
+          ticker.scrollLeft = 0
+        } else {
+          ticker.scrollLeft += 1
+        }
+      }
+      const animation = setInterval(animateTicker, 50)
+      return () => clearInterval(animation)
+    }
+  }, [])
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(contractAddress)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   const tokenomicsData = {
     totalSupply: "1,010,000,000 GOTA",
@@ -33,6 +58,24 @@ export default function Component() {
 
   return (
     <div className="flex min-h-screen flex-col bg-[#2D1B4E]">
+      {/* Ticker Tape */}
+      <div className="bg-yellow-500 text-purple-900 py-2 overflow-hidden">
+        <div ref={tickerRef} className="whitespace-nowrap inline-block animate-marquee">
+          <span className="inline-block px-4">$GOTA - The Resilient Cryptocurrency</span>
+          <span className="inline-block px-4">Total Supply: {tokenomicsData.totalSupply}</span>
+          <span className="inline-block px-4">Join the Herd Today!</span>
+          <span className="inline-block px-4">Community-Driven, Transparent Governance</span>
+          <span className="inline-block px-4">Liquidity Locked: 70-80%</span>
+          <span className="inline-block px-4">Strategic Burns for Long-Term Value</span>
+          <span className="inline-block px-4">$GOTA - The Resilient Cryptocurrency</span>
+          <span className="inline-block px-4">Total Supply: {tokenomicsData.totalSupply}</span>
+          <span className="inline-block px-4">Join the Herd Today!</span>
+          <span className="inline-block px-4">Community-Driven, Transparent Governance</span>
+          <span className="inline-block px-4">Liquidity Locked: 70-80%</span>
+          <span className="inline-block px-4">Strategic Burns for Long-Term Value</span>
+        </div>
+      </div>
+
       {/* Header */}
       <header className={`sticky top-0 z-50 w-full border-b border-purple-800/10 backdrop-blur transition-all duration-300 ${
         scrolled ? "bg-[#2D1B4E]/95 shadow-lg" : "bg-transparent"
@@ -109,31 +152,75 @@ export default function Component() {
                 Join Community
               </Button>
             </div>
-            <div className="mt-6 md:mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-delayed-more">
-              <Link href="https://dexscreener.com" target="_blank" rel="noopener noreferrer">
-                <Button 
-                  variant="outline" 
-                  className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 group text-sm backdrop-blur-sm"
-                >
-                  DexScreener
-                </Button>
-              </Link>
-              <Link href="https://www.dextools.io" target="_blank" rel="noopener noreferrer">
-                <Button 
-                  variant="outline" 
-                  className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 group text-sm backdrop-blur-sm"
-                >
-                  DexTools
-                </Button>
-              </Link>
-              <Link href="https://www.geckoterminal.com" target="_blank" rel="noopener noreferrer">
-                <Button 
-                  variant="outline" 
-                  className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 group text-sm backdrop-blur-sm"
-                >
-                  GeckoTerminal
-                </Button>
-              </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Contract Address Section */}
+      <section className="py-8 bg-purple-900/30">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <span className="text-white font-semibold">GOTA Contract Address:</span>
+            <div className="flex items-center bg-purple-800/50 rounded-lg px-4 py-2">
+              <span className="text-yellow-500 mr-2">{contractAddress}</span>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={copyToClipboard}
+                className="text-yellow-500 hover:text-yellow-400"
+              >
+                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How to Buy GOTA Section */}
+      <section className="py-12 md:py-24 bg-purple-900/20">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">How to Buy GOTA</h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-8 md:grid-cols-3">
+              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <DollarSign className="w-12 h-12 text-yellow-500 mb-4" />
+                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 1: Get SOL</h3>
+                  <p className="text-purple-100 mb-4">Purchase SOL from an exchange like Coinbase or Binance.</p>
+                  <Button variant="outline" className="mt-auto w-full">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Go to Coinbase
+                  </Button>
+                </CardContent>
+              </Card>
+              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <Wallet className="w-12 h-12 text-yellow-500 mb-4" />
+                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 2: Set Up Wallet</h3>
+                  <p className="text-purple-100 mb-4">Create a Phantom wallet and transfer your SOL to it.</p>
+                  <Button variant="outline" className="mt-auto w-full">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Get Phantom Wallet
+                  </Button>
+                </CardContent>
+              </Card>
+              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <ArrowRight className="w-12 h-12 text-yellow-500 mb-4" />
+                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 3: Swap for GOTA</h3>
+                  <p className="text-purple-100 mb-4">Use Jupiter Exchange to swap your SOL for GOTA tokens.</p>
+                  <Button variant="outline" className="mt-auto w-full">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Go to Jupiter Exchange
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="mt-8 text-center">
+              <p className="text-purple-200 mb-4">Need help? Check out our detailed guide or join our community for assistance.</p>
+              <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105">
+                View Detailed Guide
+              </Button>
             </div>
           </div>
         </div>
@@ -143,7 +230,7 @@ export default function Component() {
       <section className="py-12 md:py-24 bg-purple-900/20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 to-purple-900/30"></div>
         <div className="container px-4 md:px-6 relative">
-          <div className="mx-auto max-w-3xl text-center">
+          <div  className="mx-auto max-w-3xl text-center">
             <h2 className="mb-6 md:mb-8 text-2xl md:text-3xl lg:text-4xl font-bold text-white">
               Live Price Chart
             </h2>
@@ -263,7 +350,7 @@ export default function Component() {
                 <CardContent className="p-4 md:p-6">
                   <h3 className="mb-2 text-lg md:text-xl font-bold text-yellow-500">Airdrops & Rewards</h3>
                   <p className="text-sm text-purple-100">
-                    5% of GOTA (50,500,000 tokens) allocated for top 20 holders and community rewards through Mainland platform engagement.
+                    5% of GOTA (50,500,000 tokens) allocated for top 20 holders and community rewards through platform engagement.
                   </p>
                 </CardContent>
               </Card>
@@ -303,7 +390,7 @@ export default function Component() {
             <TabsContent value="2" className="mt-6 text-purple-100">
               <h3 className="mb-4 text-lg md:text-xl font-bold text-yellow-500">Community Building</h3>
               <ul className="list-inside list-disc space-y-2 text-sm md:text-base">
-                <li>Social Media Engagement: Expanding presence on platforms like Mainland to reward active community members</li>
+                <li>Social Media Engagement: Expanding presence on platforms to reward active community members</li>
                 <li>Community Events: Launching events, meme challenges, and community giveaways</li>
               </ul>
             </TabsContent>
