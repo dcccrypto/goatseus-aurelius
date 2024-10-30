@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { PageTransition } from "@/components/ui/page-transition"
@@ -67,13 +68,15 @@ export default function CommunityPage() {
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
                   <div className="p-6 space-y-1.5">
-                    <h3 className="text-2xl font-semibold">X.com</h3>
+                    <h3 className="text-2xl font-semibold text-white">X.com</h3>
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Follow us for the latest updates, announcements, and community highlights</p>
-                    <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
-                      Follow on X
-                    </Button>
+                    <Link href="https://x.com" target="_blank" rel="noopener noreferrer">
+                      <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
+                        Follow on X
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -81,13 +84,15 @@ export default function CommunityPage() {
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
                   <div className="p-6 space-y-1.5">
-                    <h3 className="text-2xl font-semibold">Telegram</h3>
+                    <h3 className="text-2xl font-semibold text-white">Telegram</h3>
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Join our Telegram for real-time discussions, support, and community updates</p>
-                    <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
-                      Join Telegram
-                    </Button>
+                    <Link href="https://t.me" target="_blank" rel="noopener noreferrer">
+                      <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
+                        Join Telegram
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -95,13 +100,15 @@ export default function CommunityPage() {
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
                   <div className="p-6 space-y-1.5">
-                    <h3 className="text-2xl font-semibold">TikTok</h3>
+                    <h3 className="text-2xl font-semibold text-white">TikTok</h3>
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Follow our TikTok for engaging content and community highlights</p>
-                    <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
-                      Follow TikTok
-                    </Button>
+                    <Link href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+                      <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white w-full">
+                        Follow TikTok
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </motion.div>

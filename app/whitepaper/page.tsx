@@ -6,7 +6,7 @@ import { PageTransition } from "@/components/ui/page-transition"
 import { BackButton } from "@/components/ui/back-button"
 import { NavigationHeader } from "@/components/ui/navigation-header"
 import { motion } from "framer-motion"
-import { Book, Shield, Rocket, Target } from "lucide-react"
+import { Book } from "lucide-react"
 
 export default function WhitepaperPage() {
   return (
@@ -28,7 +28,6 @@ export default function WhitepaperPage() {
               </p>
             </motion.div>
 
-            {/* Sections */}
             <div className="space-y-8">
               <Card className="bg-purple-800/20 border-purple-700">
                 <CardContent className="p-8">
@@ -44,8 +43,6 @@ export default function WhitepaperPage() {
                   </div>
                 </CardContent>
               </Card>
-
-              {/* Add more sections as needed */}
             </div>
           </div>
         </div>
