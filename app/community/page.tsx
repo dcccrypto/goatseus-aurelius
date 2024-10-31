@@ -22,6 +22,7 @@ import {
   Target,
   Video
 } from "lucide-react"
+import Image from "next/image"
 
 const container = {
   hidden: { opacity: 0 },
@@ -68,7 +69,16 @@ export default function CommunityPage() {
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
                   <div className="p-6 space-y-1.5">
-                    <h3 className="text-2xl font-semibold text-white">X.com</h3>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/assets/logos/x.png"
+                        alt="X (Twitter)"
+                        width={32}
+                        height={32}
+                        className="filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                      />
+                      <h3 className="text-2xl font-semibold text-white">X.com</h3>
+                    </div>
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Follow us for the latest updates, announcements, and community highlights</p>
@@ -84,7 +94,16 @@ export default function CommunityPage() {
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
                   <div className="p-6 space-y-1.5">
-                    <h3 className="text-2xl font-semibold text-white">Telegram</h3>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/assets/logos/telegram.png"
+                        alt="Telegram"
+                        width={32}
+                        height={32}
+                        className="filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                      />
+                      <h3 className="text-2xl font-semibold text-white">Telegram</h3>
+                    </div>
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Join our Telegram for real-time discussions, support, and community updates</p>
@@ -100,7 +119,16 @@ export default function CommunityPage() {
               <motion.div variants={item}>
                 <Card className="bg-purple-800/20 border-purple-700 transform transition-all duration-300 hover:scale-105 hover:bg-purple-800/30">
                   <div className="p-6 space-y-1.5">
-                    <h3 className="text-2xl font-semibold text-white">TikTok</h3>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/assets/logos/tiktok.png"
+                        alt="TikTok"
+                        width={32}
+                        height={32}
+                        className="filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                      />
+                      <h3 className="text-2xl font-semibold text-white">TikTok</h3>
+                    </div>
                   </div>
                   <CardContent className="text-center">
                     <p className="text-purple-100 mb-6">Follow our TikTok for engaging content and community highlights</p>
@@ -134,9 +162,9 @@ export default function CommunityPage() {
                           <Gift className="h-6 w-6 text-yellow-500" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-white mb-2">Airdrops</h3>
+                          <h3 className="text-xl font-bold text-white mb-2">Token Rewards</h3>
                           <p className="text-purple-100">
-                            5% of GOTA (50,500,000 tokens) allocated for top 20 holders as loyalty rewards
+                            50,000,000 GOTA tokens allocated for community rewards and airdrops
                           </p>
                         </div>
                       </div>

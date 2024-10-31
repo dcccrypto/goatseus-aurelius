@@ -20,7 +20,7 @@ export default function AboutPage() {
               <div className="relative inline-block mb-8">
                 <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600 opacity-75 blur"></div>
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab76f2_8a1321a80ada404bab3767e7ac07936f~mv2-Dv1lOgfUpe0N3wqPrwgpgkWg22Knv7.webp"
+                  src="/assets/logos/logo.png"
                   alt="GOTA Logo"
                   width={160}
                   height={160}

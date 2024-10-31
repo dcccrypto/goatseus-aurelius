@@ -25,7 +25,7 @@ export function NavigationHeader({ variant = 'default' }: NavigationHeaderProps)
           <nav className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab76f2_8a1321a80ada404bab3767e7ac07936f~mv2-Dv1lOgfUpe0N3wqPrwgpgkWg22Knv7.webp"
+                src="/assets/logos/logo.png"
                 alt="GOTA Logo"
                 width={40}
                 height={40}
@@ -70,7 +70,7 @@ export function NavigationHeader({ variant = 'default' }: NavigationHeaderProps)
         <nav className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab76f2_8a1321a80ada404bab3767e7ac07936f~mv2-Dv1lOgfUpe0N3wqPrwgpgkWg22Knv7.webp"
+              src="/assets/logos/logo.png"
               alt="GOTA Logo"
               width={40}
               height={40}

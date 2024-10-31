@@ -5,10 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Github, MessageSquare, Twitter, Copy, ExternalLink, Check, DollarSign, Wallet, ArrowRight, Video } from "lucide-react"
+import { Github, MessageSquare, Twitter, Copy, ExternalLink, Check, DollarSign, Wallet, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { NavigationHeader } from "@/components/ui/navigation-header"
 
 export default function Component() {
   const [activePhase, setActivePhase] = useState("1")
@@ -48,35 +47,78 @@ export default function Component() {
   }
 
   const tokenomicsData = {
-    totalSupply: "1,010,000,000 GOTA",
+    totalSupply: "1,000,000,000 GOTA",
     distribution: [
       { name: "Initial Liquidity Lock", percentage: 80, description: "Locked at launch for stability" },
-      { name: "Community Rewards & Airdrops", percentage: 5, description: "50,500,000 tokens for top 20 holders" },
-      { name: "Strategic Burns", percentage: 5, description: "50,500,000 tokens for scheduled burns" },
-      { name: "Frozen Tokens", percentage: 10, description: "101,000,000 tokens released with BTC halvings" }
+      { name: "Community Rewards & Airdrops", percentage: 5, description: "50,000,000 tokens for top 20 holders" },
+      { name: "Strategic Burns", percentage: 5, description: "50,000,000 tokens for scheduled burns" },
+      { name: "Frozen Tokens", percentage: 10, description: "100,000,000 tokens released with BTC halvings" }
     ]
   }
-
-  const tickerContent = [
-    "$GOTA - The Resilient Cryptocurrency",
-    "Total Supply: 1,010,000,000 GOTA",
-    "Join the Herd Today!",
-    "Community-Driven, Transparent Governance",
-    "Liquidity Locked: 70-80%",
-    "Strategic Burns for Long-Term Value"
-  ].join(" • ");
 
   return (
     <div className="flex min-h-screen flex-col bg-[#2D1B4E]">
       {/* Ticker Tape */}
-      <div className="bg-yellow-500 text-purple-900 py-2 overflow-hidden whitespace-nowrap">
-        <div className="animate-marquee inline-block">
-          {tickerContent} {tickerContent}
+      <div className="bg-yellow-500 text-purple-900 py-2 overflow-hidden">
+        <div ref={tickerRef} className="whitespace-nowrap inline-block animate-marquee">
+          <span className="inline-block px-4">$GOTA - The Resilient Cryptocurrency</span>
+          <span className="inline-block px-4">Total Supply: {tokenomicsData.totalSupply}</span>
+          <span className="inline-block px-4">Join the Herd Today!</span>
+          <span className="inline-block px-4">Community-Driven, Transparent Governance</span>
+          <span className="inline-block px-4">Liquidity Locked: 70-80%</span>
+          <span className="inline-block px-4">Strategic Burns for Long-Term Value</span>
+          <span className="inline-block px-4">$GOTA - The Resilient Cryptocurrency</span>
+          <span className="inline-block px-4">Total Supply: {tokenomicsData.totalSupply}</span>
+          <span className="inline-block px-4">Join the Herd Today!</span>
+          <span className="inline-block px-4">Community-Driven, Transparent Governance</span>
+          <span className="inline-block px-4">Liquidity Locked: 70-80%</span>
+          <span className="inline-block px-4">Strategic Burns for Long-Term Value</span>
         </div>
       </div>
 
       {/* Header */}
-      <NavigationHeader variant="landing" />
+      <header className={`sticky top-0 z-50 w-full border-b border-purple-800/10 backdrop-blur transition-all duration-300 ${
+        scrolled ? "bg-[#2D1B4E]/95 shadow-lg" : "bg-transparent"
+      }`}>
+        <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+          <div className="flex items-center gap-4">
+            <Link className="flex items-center gap-2 group relative" href="#">
+              <div className="absolute -inset-2 bg-gradient-to-r from-yellow-500 to-yellow-600 opacity-0 group-hover:opacity-75 blur transition-all duration-500 group-hover:duration-200"></div>
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-Du5oqsRUx4piwE9IMgmNYLSDgeOd0m.png"
+                alt="GOTA Logo"
+                width={40}
+                height={40}
+                className="rounded-full transition-transform group-hover:scale-110 relative"
+              />
+              <span className="hidden font-bold text-white sm:inline-block relative">GOTA</span>
+            </Link>
+          </div>
+          <nav className="flex items-center gap-2 md:gap-4">
+            <Link className="text-xs md:text-sm font-medium text-white/90 hover:text-white transition-colors relative group" href="/whitepaper">
+              Whitepaper
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+            </Link>
+            <Link className="text-xs md:text-sm font-medium text-white/90 hover:text-white transition-colors relative group" href="#about">
+              About
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+            </Link>
+            <Link className="text-xs md:text-sm font-medium text-white/90 hover:text-white transition-colors relative group" href="#roadmap">
+              Roadmap
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+            </Link>
+            <Link className="text-xs md:text-sm font-medium text-white/90 hover:text-white transition-colors relative group" href="/community">
+              Community
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
+            </Link>
+            <Button 
+              className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group relative overflow-hidden text-xs md:text-sm px-3 md:px-4 h-8 md:h-10"
+            >
+              Buy GOTA
+            </Button>
+          </nav>
+        </div>
+      </header>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden py-12 md:py-24">
@@ -86,7 +128,7 @@ export default function Component() {
             <div className="relative mb-6 md:mb-8 inline-block">
               <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600 opacity-75 blur group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab76f2_8a1321a80ada404bab3767e7ac07936f~mv2-Dv1lOgfUpe0N3wqPrwgpgkWg22Knv7.webp"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-Du5oqsRUx4piwE9IMgmNYLSDgeOd0m.png"
                 alt="GOTA Hero"
                 width={160}
                 height={160}
@@ -94,7 +136,7 @@ export default function Component() {
               />
             </div>
             <h1 className="mb-4 text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-white animate-fade-in">
-              A Legacy of Resilience and Unity
+              Welcome to our platform
             </h1>
             <p className="mb-6 md:mb-8 text-base md:text-lg text-purple-200 animate-fade-in-delayed">
               Goatseus Aurelius (GOTA) is a community-driven cryptocurrency built on principles of resilience, humor, and the enduring strength of the herd.
@@ -114,23 +156,104 @@ export default function Component() {
         </div>
       </section>
 
-      {/* Contract Address Section */}
+      {/* Contract Address and DEX Buttons Section */}
       <section className="py-8 bg-purple-900/30">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <span className="text-white font-semibold">GOTA Contract Address:</span>
-            <div className="flex items-center bg-purple-800/50 rounded-lg px-4 py-2">
-              <span className="text-yellow-500 mr-2">{contractAddress}</span>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={copyToClipboard}
-                className="text-yellow-500 hover:text-yellow-400"
-              >
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              </Button>
-            </div>
-          </div>
+          <Card className="bg-purple-800/20 border-purple-700">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-6">
+                {/* Contract Address */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-lg bg-purple-900/40 border border-purple-700/50">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-Du5oqsRUx4piwE9IMgmNYLSDgeOd0m.png"
+                      alt="GOTA Logo"
+                      width={32}
+                      height={32}
+                      className="rounded-full"
+                    />
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium text-yellow-500">GOTA Contract Address</span>
+                      <span className="text-xs text-purple-200">{contractAddress}</span>
+                    </div>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={copyToClipboard}
+                    className="min-w-[100px] bg-purple-800/50 hover:bg-purple-700/50 text-yellow-500 hover:text-yellow-400"
+                  >
+                    {copied ? (
+                      <Check className="h-4 w-4 mr-2" />
+                    ) : (
+                      <Copy className="h-4 w-4 mr-2" />
+                    )}
+                    {copied ? "Copied!" : "Copy"}
+                  </Button>
+                </div>
+
+                {/* DEX Links */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <Link
+                    href="https://dexscreener.com/solana/BYbGCRpD75B8JukmqYnMUN5G8s8Km469BtCo9P6Veijv"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button className="w-full bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105">
+                      <Image
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dexscreener%20-%20Copy-dI8Cjcmx4mGH6sK5u62djeWu12pxhc.png"
+                        alt="DexScreener"
+                        width={20}
+                        height={20}
+                        className="mr-2"
+                      />
+                      DexScreener
+                    </Button>
+                  </Link>
+                  <Link
+                    href="https://www.dextools.io/app/en/solana/pair-explorer/BYbGCRpD75B8JukmqYnMUN5G8s8Km469BtCo9P6Veijv"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button className="w-full bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105">
+                      <Image
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dextools%20-%20Copy-VCR08KCn89Z7To8zdGpCskYQF7vG04.png"
+                        alt="DexTools"
+                        width={20}
+                        height={20}
+                        className="mr-2"
+                      />
+                      DexTools
+                    </Button>
+                  </Link>
+                  <Button className="w-full bg-gray-500/50 text-white cursor-not-allowed" disabled>
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/coingecko-6tstg81nazmjphSqnISj6EjKvPP9w7.png"
+                      alt="CoinGecko"
+                      width={20}
+                      height={20}
+                      className="mr-2 opacity-50"
+                    />
+                    CoinGecko
+                    <span className="ml-2 text-xs bg-yellow-500 text-purple-900 px-2 py-0.5 rounded-full">Soon</span>
+                  </Button>
+                  <Button className="w-full  bg-gray-500/50 text-white cursor-not-allowed" disabled>
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/coinmarketcap%20-%20Copy-2CYZueIlxezSfbdygdNQmMu5itYaAW.png"
+                      alt="CoinMarketCap"
+                      width={20}
+                      height={20}
+                      className="mr-2 opacity-50"
+                    />
+                    CMC
+                    <span className="ml-2 text-xs bg-yellow-500 text-purple-900 px-2 py-0.5 rounded-full">Soon</span>
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -145,6 +268,7 @@ export default function Component() {
                   <DollarSign className="w-12 h-12 text-yellow-500 mb-4" />
                   <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 1: Get SOL</h3>
                   <p className="text-purple-100 mb-4">Purchase SOL from an exchange like Coinbase or Binance.</p>
+                  
                 </CardContent>
               </Card>
               <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
@@ -152,12 +276,10 @@ export default function Component() {
                   <Wallet className="w-12 h-12 text-yellow-500 mb-4" />
                   <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 2: Set Up Wallet</h3>
                   <p className="text-purple-100 mb-4">Create a Phantom wallet and transfer your SOL to it.</p>
-                  <Link href="https://phantom.app/en-GB/download" target="_blank" rel="noopener noreferrer" className="w-full">
-                    <Button variant="outline" className="mt-auto w-full">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Get Phantom Wallet
-                    </Button>
-                  </Link>
+                  <Button variant="outline" className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Get Phantom Wallet
+                  </Button>
                 </CardContent>
               </Card>
               <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
@@ -165,17 +287,10 @@ export default function Component() {
                   <ArrowRight className="w-12 h-12 text-yellow-500 mb-4" />
                   <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 3: Swap for GOTA</h3>
                   <p className="text-purple-100 mb-4">Use Jupiter Exchange to swap your SOL for GOTA tokens.</p>
-                  <Link 
-                    href="https://jup.ag/swap/SOL-Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-full"
-                  >
-                    <Button variant="outline" className="mt-auto w-full">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Swap for GOTA
-                    </Button>
-                  </Link>
+                  <Button variant="outline" className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Go to Jupiter Exchange
+                  </Button>
                 </CardContent>
               </Card>
             </div>
@@ -199,6 +314,16 @@ export default function Component() {
                 src="https://www.dextools.io/widget-chart/en/solana/pe-light/BYbGCRpD75B8JukmqYnMUN5G8s8Km469BtCo9P6Veijv?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
                 className="absolute inset-0"
                 style={{ border: 'none' }}
+              />
+            </div>
+            <div className="flex justify-center items-center mt-4 space-x-4">
+              
+              <Image
+                src="/assets/logos/dextools.png"
+                alt="DEXTools"
+                width={24}
+                height={24}
+                className="opacity-80 hover:opacity-100"
               />
             </div>
             <p className="mt-4 text-sm md:text-base text-purple-200">
@@ -259,9 +384,9 @@ export default function Component() {
                 <CardContent className="p-4 md:p-6">
                   <h3 className="mb-2 text-lg md:text-xl font-bold text-yellow-500">Token Freezing</h3>
                   <ul className="text-sm text-purple-100 space-y-2">
-                    <li>• Total Frozen: 101,000,000 GOTA</li>
-                    <li>• Phase 1: 50.5M unlocked with BTC halving</li>
-                    <li>• Phase 2: 50.5M unlocked 4 years after</li>
+                    <li>• Total Frozen: 100,000,000 GOTA</li>
+                    <li>• Phase 1: 50M unlocked with BTC halving</li>
+                    <li>• Phase 2: 50M unlocked 4 years after</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -307,7 +432,7 @@ export default function Component() {
                 <CardContent className="p-4 md:p-6">
                   <h3 className="mb-2 text-lg md:text-xl font-bold text-yellow-500">Airdrops & Rewards</h3>
                   <p className="text-sm text-purple-100">
-                    5% of GOTA (50,500,000 tokens) allocated for top 20 holders and community rewards through platform engagement.
+                    5% of GOTA (50,000,000 tokens) allocated for top 20 holders and community rewards through platform engagement.
                   </p>
                 </CardContent>
               </Card>
@@ -390,7 +515,7 @@ export default function Component() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab76f2_8a1321a80ada404bab3767e7ac07936f~mv2-Dv1lOgfUpe0N3wqPrwgpgkWg22Knv7.webp"
+                src="/assets/logos/logo.png"
                 alt="GOTA Logo"
                 width={32}
                 height={32}
@@ -399,15 +524,21 @@ export default function Component() {
               />
               <span className="text-xs md:text-sm text-purple-200">Guided by Purpose, Fortified by Unity</span>
             </div>
-            <div className="flex gap-6">
+            <div className="flex gap-10">
               <Link 
                 href="https://x.com/GOTAGOAT1" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-purple-200 hover:text-white transition-colors transform hover:scale-110"
               >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
+                <Image
+                  src="/assets/logos/x.png"
+                  alt="X (Twitter)"
+                  width={44}
+                  height={44}
+                  className="opacity-80 hover:opacity-100 filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                />
+                <span className="sr-only">X (Twitter)</span>
               </Link>
               <Link 
                 href="https://t.me/goatAURELIUS" 
@@ -415,7 +546,13 @@ export default function Component() {
                 rel="noopener noreferrer" 
                 className="text-purple-200 hover:text-white transition-colors transform hover:scale-110"
               >
-                <MessageSquare className="h-5 w-5" />
+                <Image
+                  src="/assets/logos/telegram.png"
+                  alt="Telegram"
+                  width={44}
+                  height={44}
+                  className="opacity-80 hover:opacity-100 filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                />
                 <span className="sr-only">Telegram</span>
               </Link>
               <Link 
@@ -424,7 +561,13 @@ export default function Component() {
                 rel="noopener noreferrer" 
                 className="text-purple-200 hover:text-white transition-colors transform hover:scale-110"
               >
-                <Video className="h-5 w-5" />
+                <Image
+                  src="/assets/logos/tiktok.png"
+                  alt="TikTok"
+                  width={44}
+                  height={44}
+                  className="opacity-80 hover:opacity-100 filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                />
                 <span className="sr-only">TikTok</span>
               </Link>
             </div>

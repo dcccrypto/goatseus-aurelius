@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowRight, Rocket, Shield, Users, Zap, BarChart2, Lock } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function WhitepaperPage() {
   return (
@@ -83,19 +84,19 @@ export default function WhitepaperPage() {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h4 className="text-xl font-bold text-white mb-2">Token Supply</h4>
-                        <p className="text-purple-100 mb-4">Total Supply: 1,010,000,000 GOTA</p>
+                        <p className="text-purple-100 mb-4">Total Supply: 1,000,000,000 GOTA</p>
                         <ul className="space-y-2 text-purple-100">
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                            <span>Community Rewards: 5% (50,500,000 tokens)</span>
+                            <span>Community Rewards: 5% (50,000,000 tokens)</span>
                           </li>
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                            <span>Strategic Burns: 5% (50,500,000 tokens)</span>
+                            <span>Strategic Burns: 5% (50,000,000 tokens)</span>
                           </li>
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-                            <span>Frozen Tokens: 10% (101,000,000 tokens)</span>
+                            <span>Frozen Tokens: 10% (100,000,000 tokens)</span>
                           </li>
                         </ul>
                       </div>
@@ -129,10 +130,54 @@ export default function WhitepaperPage() {
                     </h3>
                     <div className="space-y-4 text-purple-100">
                       <p>GOTA fosters a strong community through various initiatives:</p>
+                      <div className="flex gap-6 mb-6">
+                        <Link 
+                          href="https://x.com/GOTAGOAT1" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transform hover:scale-110 transition-transform"
+                        >
+                          <Image
+                            src="/assets/logos/x.png"
+                            alt="X (Twitter)"
+                            width={32}
+                            height={32}
+                            className="filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                          />
+                        </Link>
+                        <Link 
+                          href="https://t.me/goatAURELIUS" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transform hover:scale-110 transition-transform"
+                        >
+                          <Image
+                            src="/assets/logos/telegram.png"
+                            alt="Telegram"
+                            width={32}
+                            height={32}
+                            className="filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                          />
+                        </Link>
+                        <Link 
+                          href="https://www.tiktok.com/@rum_burgundy" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transform hover:scale-110 transition-transform"
+                        >
+                          <Image
+                            src="/assets/logos/tiktok.png"
+                            alt="TikTok"
+                            width={32}
+                            height={32}
+                            className="filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
+                          />
+                        </Link>
+                      </div>
                       <ul className="space-y-2">
                         <li className="flex items-start">
                           <Zap className="mr-2 h-5 w-5 text-yellow-500 flex-shrink-0 mt-1" />
-                          <span>Airdrops: 5% of GOTA (50,500,000 tokens) for top 20 holders</span>
+                          <span>Airdrops: 5% of GOTA (50,000,000 tokens) for top 20 holders</span>
                         </li>
                         <li className="flex items-start">
                           <Zap className="mr-2 h-5 w-5 text-yellow-500 flex-shrink-0 mt-1" />
