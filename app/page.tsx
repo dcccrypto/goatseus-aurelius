@@ -136,7 +136,7 @@ export default function Component() {
               />
             </div>
             <h1 className="mb-4 text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-white animate-fade-in">
-              Welcome to our platform
+              Welcome to the Herd
             </h1>
             <p className="mb-6 md:mb-8 text-base md:text-lg text-purple-200 animate-fade-in-delayed">
               Goatseus Aurelius (GOTA) is a community-driven cryptocurrency built on principles of resilience, humor, and the enduring strength of the herd.
