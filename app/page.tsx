@@ -111,11 +111,17 @@ export default function Component() {
               Community
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-500 transition-all group-hover:w-full"></span>
             </Link>
-            <Button 
-              className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group relative overflow-hidden text-xs md:text-sm px-3 md:px-4 h-8 md:h-10"
+            <Link 
+              href="https://jup.ag/swap/SOL-Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs" 
+              target="_blank" 
+              rel="noopener noreferrer"
             >
-              Buy GOTA
-            </Button>
+              <Button 
+                className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group relative overflow-hidden text-xs md:text-sm px-3 md:px-4 h-8 md:h-10"
+              >
+                Buy GOTA
+              </Button>
+            </Link>
           </nav>
         </div>
       </header>
@@ -142,15 +148,19 @@ export default function Component() {
               Goatseus Aurelius (GOTA) is a community-driven cryptocurrency built on principles of resilience, humor, and the enduring strength of the herd.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in-delayed-more">
-              <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group w-full sm:w-auto">
-                Explore White Paper
-              </Button>
-              <Button 
-                variant="outline" 
-                className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
-              >
-                Join Community
-              </Button>
+              <Link href="/whitepaper">
+                <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group w-full sm:w-auto">
+                  Explore White Paper
+                </Button>
+              </Link>
+              <Link href="/community">
+                <Button 
+                  variant="outline" 
+                  className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
+                >
+                  Join Community
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -276,7 +286,11 @@ export default function Component() {
                   <Wallet className="w-12 h-12 text-yellow-500 mb-4" />
                   <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 2: Set Up Wallet</h3>
                   <p className="text-purple-100 mb-4">Create a Phantom wallet and transfer your SOL to it.</p>
-                  <Button variant="outline" className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600">
+                  <Button 
+                    variant="outline" 
+                    className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600"
+                    onClick={() => window.open('https://phantom.app/', '_blank')}
+                  >
                     <ExternalLink className="mr-2 h-4 w-4" />
                     Get Phantom Wallet
                   </Button>
@@ -287,7 +301,11 @@ export default function Component() {
                   <ArrowRight className="w-12 h-12 text-yellow-500 mb-4" />
                   <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 3: Swap for GOTA</h3>
                   <p className="text-purple-100 mb-4">Use Jupiter Exchange to swap your SOL for GOTA tokens.</p>
-                  <Button variant="outline" className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600">
+                  <Button 
+                    variant="outline" 
+                    className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600"
+                    onClick={() => window.open('https://jup.ag/swap/SOL-Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs', '_blank')}
+                  >
                     <ExternalLink className="mr-2 h-4 w-4" />
                     Go to Jupiter Exchange
                   </Button>

@@ -235,9 +235,11 @@ export default function WhitepaperPage() {
                   Goatseus Aurelius is more than a token—it's a resilient community, a movement, and a legacy. Built on principles of transparency, integrity, and sustainable growth, GOTA aims to foster a lasting legacy within the crypto space. Guided by purpose and fortified by the strength of the herd, GOTA stands as a testament to resilience and unity in an evolving industry.
                 </p>
                 <div className="flex justify-center">
-                  <Button className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white hover:from-yellow-600 hover:to-yellow-700 transition-all hover:scale-105">
-                    Join the GOTA Community
-                  </Button>
+                  <Link href="/community">
+                    <Button className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white hover:from-yellow-600 hover:to-yellow-700 transition-all hover:scale-105">
+                      Join the GOTA Community
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
