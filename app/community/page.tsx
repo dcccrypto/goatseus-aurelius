@@ -164,7 +164,7 @@ export default function CommunityPage() {
                         <div>
                           <h3 className="text-xl font-bold text-white mb-2">Token Rewards</h3>
                           <p className="text-purple-100">
-                            50,000,000 GOTA tokens allocated for community rewards and airdrops
+                            50,000,000 GOTA tokens allocated for all holders and community rewards
                           </p>
                         </div>
                       </div>

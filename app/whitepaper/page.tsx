@@ -26,7 +26,7 @@ export default function WhitepaperPage() {
             className="max-w-4xl mx-auto"
           >
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Goatseus Aurelius (GOTA) White Paper</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">GOATSEUS AURELIUS (GOTA) White Paper</h1>
               <p className="text-xl text-purple-200">A Community-Driven Cryptocurrency Built on Resilience and Transparency</p>
             </div>
 
@@ -88,7 +88,7 @@ export default function WhitepaperPage() {
                         <ul className="space-y-2 text-purple-100">
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                            <span>Community Rewards: 5% (50,000,000 tokens)</span>
+                            <span>Community Rewards: 5% (50,000,000 tokens) for all holders</span>
                           </li>
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>

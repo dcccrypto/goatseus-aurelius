@@ -142,7 +142,7 @@ export default function Component() {
               />
             </div>
             <h1 className="mb-4 text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-white animate-fade-in">
-              Welcome to the Herd
+              GOATSEUS AURELIUS<br/>A Legacy of Resilience and Unity
             </h1>
             <p className="mb-6 md:mb-8 text-base md:text-lg text-purple-200 animate-fade-in-delayed">
               Goatseus Aurelius (GOTA) is a community-driven cryptocurrency built on principles of resilience, humor, and the enduring strength of the herd.
@@ -450,7 +450,7 @@ export default function Component() {
                 <CardContent className="p-4 md:p-6">
                   <h3 className="mb-2 text-lg md:text-xl font-bold text-yellow-500">Airdrops & Rewards</h3>
                   <p className="text-sm text-purple-100">
-                    5% of GOTA (50,000,000 tokens) allocated for top 20 holders and community rewards through platform engagement.
+                    5% of GOTA (50,000,000 tokens) allocated for all holders and community rewards through platform engagement.
                   </p>
                 </CardContent>
               </Card>
