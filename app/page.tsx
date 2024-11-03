@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Github, MessageSquare, Twitter, Copy, ExternalLink, Check, DollarSign, Wallet, ArrowRight } from "lucide-react"
+import { Github, MessageSquare, Twitter, Copy, ExternalLink, Check, DollarSign, Wallet, ArrowRight, Code } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { Footer } from "@/components/ui/footer"
 
 export default function Component() {
   const [activePhase, setActivePhase] = useState("1")
@@ -527,71 +528,7 @@ export default function Component() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-purple-800/10 bg-[#2D1B4E] py-4 md:py-6">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <Image
-                src="/assets/logos/logo.png"
-                alt="GOTA Logo"
-                width={32}
-                height={32}
-                className="rounded-full"
-                priority
-              />
-              <span className="text-xs md:text-sm text-purple-200">Guided by Purpose, Fortified by Unity</span>
-            </div>
-            <div className="flex gap-10">
-              <Link 
-                href="https://x.com/GOTAGOAT1" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-purple-200 hover:text-white transition-colors transform hover:scale-110"
-              >
-                <Image
-                  src="/assets/logos/x.png"
-                  alt="X (Twitter)"
-                  width={44}
-                  height={44}
-                  className="opacity-80 hover:opacity-100 filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
-                />
-                <span className="sr-only">X (Twitter)</span>
-              </Link>
-              <Link 
-                href="https://t.me/goatAURELIUS" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-purple-200 hover:text-white transition-colors transform hover:scale-110"
-              >
-                <Image
-                  src="/assets/logos/telegram.png"
-                  alt="Telegram"
-                  width={44}
-                  height={44}
-                  className="opacity-80 hover:opacity-100 filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
-                />
-                <span className="sr-only">Telegram</span>
-              </Link>
-              <Link 
-                href="https://www.tiktok.com/@rum_burgundy" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-purple-200 hover:text-white transition-colors transform hover:scale-110"
-              >
-                <Image
-                  src="/assets/logos/tiktok.png"
-                  alt="TikTok"
-                  width={44}
-                  height={44}
-                  className="opacity-80 hover:opacity-100 filter invert sepia saturate-[10000%] hue-rotate-[265deg]"
-                />
-                <span className="sr-only">TikTok</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

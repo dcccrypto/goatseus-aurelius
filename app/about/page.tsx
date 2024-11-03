@@ -6,6 +6,7 @@ import { PageTransition } from "@/components/ui/page-transition"
 import { BackButton } from "@/components/ui/back-button"
 import { NavigationHeader } from "@/components/ui/navigation-header"
 import { Card, CardContent } from "@/components/ui/card"
+import { Footer } from "@/components/ui/footer"
 
 export default function AboutPage() {
   return (
@@ -46,6 +47,7 @@ export default function AboutPage() {
             </Card>
           </div>
         </div>
+        <Footer />
       </div>
     </PageTransition>
   )

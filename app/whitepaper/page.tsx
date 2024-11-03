@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowRight, Rocket, Shield, Users, Zap, BarChart2, Lock } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { Footer } from "@/components/ui/footer"
 
 export default function WhitepaperPage() {
   return (
@@ -245,6 +246,7 @@ export default function WhitepaperPage() {
             </Card>
           </motion.div>
         </div>
+        <Footer />
       </div>
     </PageTransition>
   )

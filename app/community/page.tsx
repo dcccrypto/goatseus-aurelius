@@ -23,6 +23,7 @@ import {
   Video
 } from "lucide-react"
 import Image from "next/image"
+import { Footer } from "@/components/ui/footer"
 
 const container = {
   hidden: { opacity: 0 },
@@ -293,6 +294,7 @@ export default function CommunityPage() {
             </motion.div>
           </div>
         </div>
+        <Footer />
       </div>
     </PageTransition>
   )
