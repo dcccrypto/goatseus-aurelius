@@ -146,7 +146,7 @@ export default function Component() {
               GOATSEUS AURELIUS<br/>A Legacy of Resilience and Unity
             </h1>
             <p className="mb-6 md:mb-8 text-base md:text-lg text-purple-200 animate-fade-in-delayed">
-              Goatseus Aurelius (GOTA) is a community-driven cryptocurrency built on principles of resilience, humor, and the enduring strength of the herd.
+              Goatseus Aurelius (GOTA) is a community-driven cryptocurrency built on principles of resilience, humor, and the enduring strength of the purple herd.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in-delayed-more">
               <Link href="/whitepaper">
@@ -525,6 +525,48 @@ export default function Component() {
               Past performance does not guarantee future results.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Donation Section */}
+      <section className="py-8 bg-purple-900/30">
+        <div className="container px-4 md:px-6">
+          <Card className="bg-purple-800/20 border-purple-700">
+            <CardContent className="p-6">
+              <div className="flex flex-col items-center gap-4 text-center">
+                <h3 className="text-xl font-bold text-yellow-500">Support GOTA Community Events</h3>
+                <p className="text-purple-200 text-sm">
+                  Help us continue providing giveaways and community events by donating SOL for transaction fees
+                </p>
+                <div className="flex flex-col sm:flex-row items-center gap-4 bg-purple-900/40 p-4 rounded-lg border border-purple-700/50">
+                  <span className="text-white font-medium">Donation Address:</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-yellow-500 text-sm">3rf4NThR65JBwLugKSMEPch7v3iab29HpiJHMa2AhKgj</span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        navigator.clipboard.writeText("3rf4NThR65JBwLugKSMEPch7v3iab29HpiJHMa2AhKgj")
+                        setCopied(true)
+                        setTimeout(() => setCopied(false), 2000)
+                      }}
+                      className="min-w-[100px] bg-purple-800/50 hover:bg-purple-700/50 text-yellow-500 hover:text-yellow-400"
+                    >
+                      {copied ? (
+                        <Check className="h-4 w-4 mr-2" />
+                      ) : (
+                        <Copy className="h-4 w-4 mr-2" />
+                      )}
+                      {copied ? "Copied!" : "Copy"}
+                    </Button>
+                  </div>
+                </div>
+                <p className="text-purple-200/80 text-xs">
+                  Your support helps maintain community engagement and rewards
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
