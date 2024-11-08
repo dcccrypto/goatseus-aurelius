@@ -51,7 +51,7 @@ export default function Component() {
     totalSupply: "1,000,000,000 GOTA",
     distribution: [
       { name: "Initial Liquidity Lock", percentage: 80, description: "Locked at launch for stability" },
-      { name: "Community Rewards & Airdrops", percentage: 5, description: "50,000,000 tokens for top 20 holders" },
+      { name: "Community Rewards & Airdrops", percentage: 20, description: "200,000,000 tokens (100M distributed, 100M remaining)" },
       { name: "Strategic Burns", percentage: 5, description: "50,000,000 tokens for scheduled burns" },
       { name: "Frozen Tokens", percentage: 10, description: "100,000,000 tokens released with BTC halvings" }
     ]

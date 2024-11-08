@@ -89,7 +89,15 @@ export default function WhitepaperPage() {
                         <ul className="space-y-2 text-purple-100">
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                            <span>Community Rewards: 5% (50,000,000 tokens) for all holders</span>
+                            <span>Community Rewards: 20% (200,000,000 tokens total)</span>
+                          </li>
+                          <li className="flex items-center pl-6">
+                            <div className="w-3 h-3 rounded-full bg-gray-500 mr-2"></div>
+                            <span>Distributed: 10% (100,000,000 tokens)</span>
+                          </li>
+                          <li className="flex items-center pl-6">
+                            <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                            <span>Remaining: 10% (100,000,000 tokens)</span>
                           </li>
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
