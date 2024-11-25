@@ -66,13 +66,13 @@ export default function Component() {
           <span className="inline-block px-4">Total Supply: {tokenomicsData.totalSupply}</span>
           <span className="inline-block px-4">Join the Herd Today!</span>
           <span className="inline-block px-4">Community-Driven, Transparent Governance</span>
-          <span className="inline-block px-4">Liquidity Locked: 70-80%</span>
+          <span className="inline-block px-4">Liquidity Locked: 99%</span>
           <span className="inline-block px-4">Strategic Burns for Long-Term Value</span>
           <span className="inline-block px-4">$GOTA - The Resilient Cryptocurrency</span>
           <span className="inline-block px-4">Total Supply: {tokenomicsData.totalSupply}</span>
           <span className="inline-block px-4">Join the Herd Today!</span>
           <span className="inline-block px-4">Community-Driven, Transparent Governance</span>
-          <span className="inline-block px-4">Liquidity Locked: 70-80%</span>
+          <span className="inline-block px-4">Liquidity Locked: 99%</span>
           <span className="inline-block px-4">Strategic Burns for Long-Term Value</span>
         </div>
       </div>
