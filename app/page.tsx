@@ -133,7 +133,7 @@ export default function Component() {
         <div className="container px-4 md:px-6 relative z-10">
           <div className="mx-auto max-w-2xl text-center">
             <div className="relative mb-6 md:mb-8 inline-block">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600 opacity-75 blur group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600 opacity-75 blur-lg group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-Du5oqsRUx4piwE9IMgmNYLSDgeOd0m.png"
                 alt="GOTA Hero"
@@ -204,44 +204,30 @@ export default function Component() {
                 </div>
 
                 {/* DEX Links */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <Link
-                    href="https://dexscreener.com/solana/BYbGCRpD75B8JukmqYnMUN5G8s8Km469BtCo9P6Veijv"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full"
-                  >
-                    <Button className="w-full bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105">
-                      <Image
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dexscreener%20-%20Copy-dI8Cjcmx4mGH6sK5u62djeWu12pxhc.png"
-                        alt="DexScreener"
-                        width={20}
-                        height={20}
-                        className="mr-2"
-                      />
-                      DexScreener
-                    </Button>
-                  </Link>
-                  <Link
-                    href="https://www.dextools.io/app/en/solana/pair-explorer/BYbGCRpD75B8JukmqYnMUN5G8s8Km469BtCo9P6Veijv"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full"
-                  >
-                    <Button className="w-full bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105">
-                      <Image
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dextools%20-%20Copy-VCR08KCn89Z7To8zdGpCskYQF7vG04.png"
-                        alt="DexTools"
-                        width={20}
-                        height={20}
-                        className="mr-2"
-                      />
-                      DexTools
-                    </Button>
-                  </Link>
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <Button className="w-full bg-purple-800/20 hover:bg-purple-700/30 text-white transition-all">
+                    <Image
+                      src="/assets/logos/dexscreener.png"
+                      alt="DexScreener"
+                      width={20}
+                      height={20}
+                      className="mr-2"
+                    />
+                    DexScreener
+                  </Button>
+                  <Button className="w-full bg-purple-800/20 hover:bg-purple-700/30 text-white transition-all">
+                    <Image
+                      src="/assets/logos/dextools.png"
+                      alt="DexTools"
+                      width={20}
+                      height={20}
+                      className="mr-2"
+                    />
+                    DexTools
+                  </Button>
                   <Button className="w-full bg-gray-500/50 text-white cursor-not-allowed" disabled>
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/coingecko-6tstg81nazmjphSqnISj6EjKvPP9w7.png"
+                      src="/assets/logos/coingecko.png"
                       alt="CoinGecko"
                       width={20}
                       height={20}
@@ -250,9 +236,9 @@ export default function Component() {
                     CoinGecko
                     <span className="ml-2 text-xs bg-yellow-500 text-purple-900 px-2 py-0.5 rounded-full">Soon</span>
                   </Button>
-                  <Button className="w-full  bg-gray-500/50 text-white cursor-not-allowed" disabled>
+                  <Button className="w-full bg-gray-500/50 text-white cursor-not-allowed" disabled>
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/coinmarketcap%20-%20Copy-2CYZueIlxezSfbdygdNQmMu5itYaAW.png"
+                      src="/assets/logos/coinmarketcap.png"
                       alt="CoinMarketCap"
                       width={20}
                       height={20}
