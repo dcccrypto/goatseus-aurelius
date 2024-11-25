@@ -45,12 +45,6 @@ export function Footer() {
                   Community
                 </Link>
               </li>
-              <li>
-                <Link href="https://github.com/goatseus" target="_blank" rel="noopener noreferrer" className="text-purple-200 hover:text-yellow-500 transition-colors flex items-center gap-2">
-                  <Code className="h-4 w-4" />
-                  Developer Support
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -120,6 +114,41 @@ export function Footer() {
                   height={20}
                 />
                 DexTools
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Developer Support Section */}
+        <div className="mt-8 pt-8 border-t border-purple-800/10">
+          <div className="flex flex-col items-center text-center space-y-4">
+            <div className="flex items-center gap-2">
+              <Code className="h-6 w-6 text-yellow-500" />
+              <h3 className="text-xl font-semibold text-white">Developer Support</h3>
+            </div>
+            <p className="text-purple-200 text-sm max-w-xl">
+              Support the developer who brought GOTA to life
+            </p>
+            <p className="text-purple-200 text-sm">
+              Looking for a stunning website for your memecoin? This website was crafted by me!
+              Reach out for professional web development services.
+            </p>
+            <div className="flex gap-4">
+              <Link 
+                href="https://x.com/@dcc_crypto" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-purple-900/40 px-4 py-2 rounded-lg text-purple-200 hover:text-yellow-500 transition-colors"
+              >
+                @dcc_crypto
+              </Link>
+              <Link 
+                href="https://t.me/plug2k" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-purple-900/40 px-4 py-2 rounded-lg text-purple-200 hover:text-yellow-500 transition-colors"
+              >
+                @plug2k
               </Link>
             </div>
           </div>

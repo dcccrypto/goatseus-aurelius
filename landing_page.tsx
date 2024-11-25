@@ -8,7 +8,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Github, MessageSquare, Twitter, Copy, ExternalLink, Check, DollarSign, Wallet, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { Footer } from "@/components/ui/footer"
 
 export default function Component() {
   const [activePhase, setActivePhase] = useState("1")
@@ -413,8 +412,52 @@ export default function Component() {
         </div>
       </section>
 
+      {/* Risk Disclaimer */}
+      <section className="border-t border-purple-800/10 bg-[#2D1B4E] py-4 md:py-6">
+        <div className="container px-4 md:px-6">
+          <div className="mx-auto max-w-3xl text-center text-xs md:text-sm text-purple-200">
+            <p className="mb-2">
+              As with any digital asset, GOTA comes with inherent risks, including market volatility and liquidity issues. 
+              Holders are advised to conduct thorough research and be aware of the inherent risks before investing.
+            </p>
+            <p>
+              Past performance does not guarantee future results.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <Footer />
+      <footer className="border-t border-purple-800/10 bg-[#2D1B4E] py-4 md:py-6">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab76f2_8a1321a80ada404bab3767e7ac07936f~mv2-Dv1lOgfUpe0N3wqPrwgpgkWg22Knv7.webp"
+                alt="GOTA Logo"
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
+              <span className="text-xs md:text-sm text-purple-200">Guided by Purpose, Fortified by Unity</span>
+            </div>
+            <div className="flex gap-6">
+              <Link href="#" className="text-purple-200 hover:text-white transition-colors transform hover:scale-110">
+                <Twitter className="h-5 w-5" />
+                <span className="sr-only">Twitter</span>
+              </Link>
+              <Link href="#" className="text-purple-200 hover:text-white transition-colors transform hover:scale-110">
+                <MessageSquare className="h-5 w-5" />
+                <span className="sr-only">Discord</span>
+              </Link>
+              <Link href="#" className="text-purple-200 hover:text-white transition-colors transform hover:scale-110">
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
