@@ -45,6 +45,12 @@ export function Footer() {
                   Community
                 </Link>
               </li>
+              <li>
+                <Link href="https://github.com/goatseus" target="_blank" rel="noopener noreferrer" className="text-purple-200 hover:text-yellow-500 transition-colors flex items-center gap-2">
+                  <Code className="h-4 w-4" />
+                  Developer Support
+                </Link>
+              </li>
             </ul>
           </div>
 
