@@ -48,12 +48,12 @@ export default function Component() {
   }
 
   const tokenomicsData = {
-    totalSupply: "1,000,000,000 GOTA",
+    totalSupply: "1,010,000,000 GOTA",
     distribution: [
       { name: "Initial Liquidity Lock", percentage: 80, description: "Locked at launch for stability" },
-      { name: "Community Rewards & Airdrops", percentage: 20, description: "200,000,000 tokens (100M distributed, 100M remaining)" },
-      { name: "Strategic Burns", percentage: 5, description: "50,000,000 tokens for scheduled burns" },
-      { name: "Frozen Tokens", percentage: 10, description: "100,000,000 tokens released with BTC halvings" }
+      { name: "Community Rewards & Airdrops", percentage: 5, description: "50,500,000 tokens for top 20 holders" },
+      { name: "Strategic Burns", percentage: 5, description: "50,500,000 tokens for scheduled burns" },
+      { name: "Frozen Tokens", percentage: 10, description: "101,000,000 tokens released with BTC halvings" }
     ]
   }
 
@@ -496,21 +496,6 @@ export default function Component() {
               </ul>
             </TabsContent>
           </Tabs>
-        </div>
-      </section>
-
-      {/* Risk Disclaimer */}
-      <section className="border-t border-purple-800/10 bg-[#2D1B4E] py-4 md:py-6">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl text-center text-xs md:text-sm text-purple-200">
-            <p className="mb-2">
-              As with any digital asset, GOTA comes with inherent risks, including market volatility and liquidity issues. 
-              Holders are advised to conduct thorough research and be aware of the inherent risks before investing.
-            </p>
-            <p>
-              Past performance does not guarantee future results.
-            </p>
-          </div>
         </div>
       </section>
 
