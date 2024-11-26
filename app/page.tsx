@@ -50,9 +50,9 @@ export default function Component() {
   const tokenomicsData = {
     totalSupply: "1,010,000,000 GOTA",
     distribution: [
-      { name: "Initial Liquidity Lock", percentage: 99, description: "Locked at launch for stability" },
+      { name: "Initial Liquidity Lock", percentage: 99, description: "Locked on tools.smiithi.io at launch for stability" },
       { name: "Community Rewards & Airdrops", percentage: 15, description: "150,000,000 tokens for community rewards" },
-      { name: "Strategic Burns", percentage: 5, description: "50,500,000 tokens for scheduled burns" },
+      { name: "Strategic Burns", percentage: 5, description: "50,000,000 tokens for scheduled burns" },
       { name: "Frozen Tokens", percentage: 10, description: "100,000,000 tokens have been frozen" }
     ]
   }
