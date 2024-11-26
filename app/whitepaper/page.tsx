@@ -85,23 +85,19 @@ export default function WhitepaperPage() {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h4 className="text-xl font-bold text-white mb-2">Token Supply</h4>
-                        <p className="text-purple-100 mb-4">Total Supply: 1,000,000,000 GOTA</p>
+                        <p className="text-purple-100 mb-4">Total Supply: 1,010,000,000 GOTA</p>
                         <ul className="space-y-2 text-purple-100">
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                            <span>Community Rewards: 20% (200,000,000 tokens total)</span>
+                            <span>Initial Liquidity Lock: 99% locked at launch</span>
                           </li>
-                          <li className="flex items-center pl-6">
-                            <div className="w-3 h-3 rounded-full bg-gray-500 mr-2"></div>
-                            <span>Distributed: 10% (100,000,000 tokens)</span>
-                          </li>
-                          <li className="flex items-center pl-6">
+                          <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                            <span>Remaining: 10% (100,000,000 tokens)</span>
+                            <span>Community Rewards: 15% (150,000,000 tokens total)</span>
                           </li>
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                            <span>Strategic Burns: 5% (50,000,000 tokens)</span>
+                            <span>Strategic Burns: 5% (50,500,000 tokens)</span>
                           </li>
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>

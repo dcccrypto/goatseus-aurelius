@@ -50,10 +50,10 @@ export default function Component() {
   const tokenomicsData = {
     totalSupply: "1,010,000,000 GOTA",
     distribution: [
-      { name: "Initial Liquidity Lock", percentage: 80, description: "Locked at launch for stability" },
-      { name: "Community Rewards & Airdrops", percentage: 5, description: "50,500,000 tokens for top 20 holders" },
+      { name: "Initial Liquidity Lock", percentage: 99, description: "Locked at launch for stability" },
+      { name: "Community Rewards & Airdrops", percentage: 15, description: "150,000,000 tokens for community rewards" },
       { name: "Strategic Burns", percentage: 5, description: "50,500,000 tokens for scheduled burns" },
-      { name: "Frozen Tokens", percentage: 10, description: "101,000,000 tokens released with BTC halvings" }
+      { name: "Frozen Tokens", percentage: 10, description: "100,000,000 tokens have been frozen" }
     ]
   }
 
@@ -512,7 +512,7 @@ export default function Component() {
                 <div className="flex flex-col sm:flex-row items-center gap-4 bg-purple-900/40 p-4 rounded-lg border border-purple-700/50">
                   <span className="text-white font-medium">Donation Address:</span>
                   <div className="flex items-center gap-2">
-                    <span className="text-yellow-500 text-sm">3rf4NThR65JBwLugKSMEPch7v3iab29HpiJHMa2AhKgj</span>
+                    <span className="text-yellow-500 text-sm">2uFKnc7BtS4jqArmiDs8uBkTDYR2oTjoA6XJ9h6A7aSu</span>
                     <Button
                       variant="ghost"
                       size="sm"
@@ -535,6 +535,61 @@ export default function Component() {
                 <p className="text-purple-200/80 text-xs">
                   Your support helps maintain community engagement and rewards
                 </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Press Release Section */}
+      <section className="py-12 md:py-24 bg-purple-900/20">
+        <div className="container px-4 md:px-6">
+          <Card className="bg-purple-800/20 border-purple-700">
+            <CardContent className="p-6">
+              <div className="flex flex-col items-center gap-6 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-yellow-500">Latest Press Coverage</h3>
+                <div className="flex items-center gap-2">
+                  <Image
+                    src="/assets/logos/apnews.png"
+                    alt="AP News"
+                    width={100}
+                    height={40}
+                    className="opacity-80"
+                  />
+                  <span className="text-white font-semibold">Associated Press</span>
+                </div>
+                <div className="max-w-3xl">
+                  <h4 className="text-xl font-semibold text-white mb-4">
+                    GOTA Token Emerges as a Pioneering Force in El Salvador's Cryptocurrency Landscape
+                  </h4>
+                  <p className="text-purple-100 mb-6">
+                    A groundbreaking development in El Salvador's cryptocurrency sphere as GOTA token 
+                    introduces innovative blockchain solutions and community-driven initiatives.
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    className="bg-yellow-500 text-purple-900 hover:bg-yellow-600"
+                    onClick={() => window.open('https://apnews.com/press-release/prcom/el-salvador-blockchain-25c3105ec96835ea2ee77f322ab8eb4f', '_blank')}
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Read Full Article
+                  </Button>
+                </div>
+                <div className="w-full border-t border-purple-700/50 my-6"></div>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Card className="bg-purple-900/30 border-purple-700 p-4 flex items-center gap-2">
+                    <span className="text-purple-200">Featured in</span>
+                    <span className="text-yellow-500 font-semibold">AP News</span>
+                  </Card>
+                  <Card className="bg-purple-900/30 border-purple-700 p-4 flex items-center gap-2">
+                    <span className="text-purple-200">Coverage</span>
+                    <span className="text-yellow-500 font-semibold">Global</span>
+                  </Card>
+                  <Card className="bg-purple-900/30 border-purple-700 p-4 flex items-center gap-2">
+                    <span className="text-purple-200">Focus</span>
+                    <span className="text-yellow-500 font-semibold">El Salvador</span>
+                  </Card>
+                </div>
               </div>
             </CardContent>
           </Card>
