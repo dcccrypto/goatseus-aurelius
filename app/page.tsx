@@ -391,7 +391,7 @@ export default function Component() {
                   <ul className="text-sm text-purple-100 space-y-2">
                     <li>• Total Frozen: 100,000,000 GOTA</li>
                     <li>• Phase 1: 50M unlocked with BTC halving</li>
-                    <li>• Phase 2: 50M unlocked 4 years after</li>
+                    <li>• Phase 2: 50M allocation decided by community vote (4 years after)</li>
                   </ul>
                 </CardContent>
               </Card>

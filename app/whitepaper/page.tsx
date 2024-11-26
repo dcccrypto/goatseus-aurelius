@@ -101,7 +101,7 @@ export default function WhitepaperPage() {
                           </li>
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-                            <span>Frozen Tokens: 10% (100,000,000 tokens)</span>
+                            <span>Token Freezing Strategy</span>
                           </li>
                         </ul>
                       </div>
