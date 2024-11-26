@@ -66,13 +66,13 @@ export default function Component() {
           <span className="inline-block px-4">Total Supply: {tokenomicsData.totalSupply}</span>
           <span className="inline-block px-4">Join the Herd Today!</span>
           <span className="inline-block px-4">Community-Driven, Transparent Governance</span>
-          <span className="inline-block px-4">Liquidity Locked: 99%</span>
+          <span className="inline-block px-4">Liquidity Locked: 99% (Verified on tools.smiithi.io)</span>
           <span className="inline-block px-4">Strategic Burns for Long-Term Value</span>
           <span className="inline-block px-4">$GOTA - The Resilient Cryptocurrency</span>
           <span className="inline-block px-4">Total Supply: {tokenomicsData.totalSupply}</span>
           <span className="inline-block px-4">Join the Herd Today!</span>
           <span className="inline-block px-4">Community-Driven, Transparent Governance</span>
-          <span className="inline-block px-4">Liquidity Locked: 99%</span>
+          <span className="inline-block px-4">Liquidity Locked: 99% (Verified on tools.smiithi.io)</span>
           <span className="inline-block px-4">Strategic Burns for Long-Term Value</span>
         </div>
       </div>
@@ -410,7 +410,7 @@ export default function Component() {
                 <CardContent className="p-4 md:p-6">
                   <h3 className="mb-2 text-lg md:text-xl font-bold text-yellow-500">Initial Lock</h3>
                   <p className="text-sm text-purple-100">
-                    70-80% of liquidity is locked at the outset, ensuring stability during the early growth phase. A portion will remain locked indefinitely, while a small percentage is reserved for strategic adjustments to enhance stability as the project matures.
+                    99% of liquidity is locked at the outset on tools.smiithi.io, ensuring stability during the early growth phase. A portion will remain locked indefinitely, while a small percentage is reserved for strategic adjustments to enhance stability as the project matures.
                   </p>
                 </CardContent>
               </Card>

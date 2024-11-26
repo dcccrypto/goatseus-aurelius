@@ -89,7 +89,7 @@ export default function WhitepaperPage() {
                         <ul className="space-y-2 text-purple-100">
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                            <span>Initial Liquidity Lock: 99% locked at launch</span>
+                            <span>Initial Liquidity Lock: 99% locked at launch on tools.smiithi.io</span>
                           </li>
                           <li className="flex items-center">
                             <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
@@ -110,7 +110,7 @@ export default function WhitepaperPage() {
                         <ul className="space-y-2 text-purple-100">
                           <li className="flex items-start">
                             <Lock className="mr-2 h-5 w-5 text-yellow-500 flex-shrink-0 mt-1" />
-                            <span>70-80% of liquidity locked at launch</span>
+                            <span>99% of liquidity locked at launch on tools.smiithi.io</span>
                           </li>
                           <li className="flex items-start">
                             <Shield className="mr-2 h-5 w-5 text-yellow-500 flex-shrink-0 mt-1" />
@@ -182,7 +182,7 @@ export default function WhitepaperPage() {
                       <ul className="space-y-2">
                         <li className="flex items-start">
                           <Zap className="mr-2 h-5 w-5 text-yellow-500 flex-shrink-0 mt-1" />
-                          <span>Airdrops: 5% of GOTA (50,000,000 tokens) for top 20 holders</span>
+                          <span>Airdrops: 15% of GOTA (150,000,000 tokens) for community rewards</span>
                         </li>
                         <li className="flex items-start">
                           <Zap className="mr-2 h-5 w-5 text-yellow-500 flex-shrink-0 mt-1" />
