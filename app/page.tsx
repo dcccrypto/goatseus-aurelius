@@ -14,6 +14,7 @@ export default function Component() {
   const [activePhase, setActivePhase] = useState("1")
   const [scrolled, setScrolled] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [baseCopied, setBaseCopied] = useState(false)
   const tickerRef = useRef<HTMLDivElement>(null)
 
   const contractAddress = "Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs"
@@ -167,90 +168,141 @@ export default function Component() {
         </div>
       </section>
 
-      {/* Contract Address and DEX Buttons Section */}
+      {/* Contract Address Section */}
       <section className="py-8 bg-purple-900/30">
         <div className="container px-4 md:px-6">
-          <Card className="bg-purple-800/20 border-purple-700">
-            <CardContent className="p-6">
-              <div className="flex flex-col gap-6">
-                {/* Contract Address */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-lg bg-purple-900/40 border border-purple-700/50">
-                  <div className="flex items-center gap-2">
-                    <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-Du5oqsRUx4piwE9IMgmNYLSDgeOd0m.png"
-                      alt="GOTA Logo"
-                      width={32}
-                      height={32}
-                      className="rounded-full"
-                    />
-                    <div className="flex flex-col">
-                      <span className="text-sm font-medium text-yellow-500">GOTA Contract Address</span>
-                      <span className="text-xs text-purple-200">{contractAddress}</span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <span className="text-white font-semibold">GOTA Contract Address:</span>
+            <div className="flex items-center bg-purple-800/50 rounded-lg px-4 py-2">
+              <span className="text-yellow-500 mr-2">{contractAddress}</span>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={copyToClipboard}
+                className="text-yellow-500 hover:text-yellow-400"
+              >
+                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Base Chain Section */}
+      <section className="py-12 bg-purple-900/20 relative">
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url("/assets/basechainsectionbg.png")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: '0.8'
+          }}
+        />
+        
+        <div className="container px-4 md:px-6 relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <Card className="bg-gradient-to-r from-purple-900/80 to-purple-800/80 border-2 border-[#F7B928]/50 shadow-lg shadow-purple-500/20 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <div className="text-center space-y-6">
+                  <div className="inline-block px-4 py-1 rounded-full bg-[#F7B928]/20 border border-[#F7B928]/40 mb-2">
+                    <span className="text-[#F7B928] text-sm font-semibold">New Launch</span>
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-4xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-[#F7B928] to-yellow-600">
+                    $GOTA on Base Chain
+                  </h2>
+                  
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 bg-purple-900/40 p-4 rounded-lg border border-purple-700/50">
+                    <span className="text-white font-semibold">Base Chain Contract:</span>
+                    <div className="flex items-center bg-purple-800/50 rounded-lg px-4 py-2 w-full sm:w-auto">
+                      <span className="text-[#F7B928] mr-2" id="baseContractAddress">0x994DeEC2622Fb511161c4489688Cc895c5985fB1</span>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => {
+                          navigator.clipboard.writeText("0x123...789")
+                          setBaseCopied(true)
+                          setTimeout(() => setBaseCopied(false), 2000)
+                        }}
+                        className="text-[#F7B928] hover:text-[#F7B928]/80"
+                      >
+                        {baseCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                      </Button>
                     </div>
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={copyToClipboard}
-                    className="min-w-[100px] bg-purple-800/50 hover:bg-purple-700/50 text-yellow-500 hover:text-yellow-400"
-                  >
-                    {copied ? (
-                      <Check className="h-4 w-4 mr-2" />
-                    ) : (
-                      <Copy className="h-4 w-4 mr-2" />
-                    )}
-                    {copied ? "Copied!" : "Copy"}
-                  </Button>
-                </div>
 
-                {/* DEX Links */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <Button className="w-full bg-purple-800/20 hover:bg-purple-700/30 text-white transition-all">
-                    <Image
-                      src="/assets/logos/dexscreener.png"
-                      alt="DexScreener"
-                      width={20}
-                      height={20}
-                      className="mr-2"
-                    />
-                    DexScreener
-                  </Button>
-                  <Button className="w-full bg-purple-800/20 hover:bg-purple-700/30 text-white transition-all">
-                    <Image
-                      src="/assets/logos/dextools.png"
-                      alt="DexTools"
-                      width={20}
-                      height={20}
-                      className="mr-2"
-                    />
-                    DexTools
-                  </Button>
-                  <Button className="w-full bg-gray-500/50 text-white cursor-not-allowed" disabled>
-                    <Image
-                      src="/assets/logos/coingecko.png"
-                      alt="CoinGecko"
-                      width={20}
-                      height={20}
-                      className="mr-2 opacity-50"
-                    />
-                    CoinGecko
-                    <span className="ml-2 text-xs bg-yellow-500 text-purple-900 px-2 py-0.5 rounded-full">Soon</span>
-                  </Button>
-                  <Button className="w-full bg-gray-500/50 text-white cursor-not-allowed" disabled>
-                    <Image
-                      src="/assets/logos/coinmarketcap.png"
-                      alt="CoinMarketCap"
-                      width={20}
-                      height={20}
-                      className="mr-2 opacity-50"
-                    />
-                    CMC
-                    <span className="ml-2 text-xs bg-yellow-500 text-purple-900 px-2 py-0.5 rounded-full">Soon</span>
-                  </Button>
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="px-6 py-3 rounded-lg bg-purple-800/50 border border-purple-700 max-w-md">
+                      <p className="text-purple-200 text-sm">
+                        🚧 A dedicated website for $GOTA on Base is currently under development 🚧
+                      </p>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                      <Link 
+                        href="https://pancakeswap.finance/?chain=base&outputCurrency=0x994DeEC2622Fb511161c4489688Cc895c5985fB1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group w-full sm:w-auto">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Buy on Base
+                        </Button>
+                      </Link>
+                      <Button 
+                        variant="outline" 
+                        className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
+                      >
+                        <Image
+                          src="/assets/logos/dexscreener.png"
+                          alt="Dexscreener"
+                          width={16}
+                          height={16}
+                          className="mr-2"
+                        />
+                        View Chart
+                      </Button>
+                    </div>
+                    
+                    <div className="flex gap-10 mt-4">
+                      <Link href="#" className="transform hover:scale-110 transition-transform">
+                        <Image
+                          src="/assets/logos/x.png"
+                          alt="X (Twitter)"
+                          width={36}
+                          height={36}
+                          className="opacity-100"
+                        />
+                        <span className="sr-only">X (Twitter)</span>
+                      </Link>
+                      <Link href="#" className="transform hover:scale-110 transition-transform">
+                        <Image
+                          src="/assets/logos/telegram.png"
+                          alt="Telegram"
+                          width={36}
+                          height={36}
+                          className="opacity-100"
+                        />
+                        <span className="sr-only">Telegram</span>
+                      </Link>
+                      <Link href="#" className="transform hover:scale-110 transition-transform">
+                        <Image
+                          src="/assets/logos/tiktok.png"
+                          alt="TikTok"
+                          width={36}
+                          height={36}
+                          className="opacity-100"
+                        />
+                        <span className="sr-only">TikTok</span>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
