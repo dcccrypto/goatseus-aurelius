@@ -251,19 +251,25 @@ export default function Component() {
                           Buy on Base
                         </Button>
                       </Link>
-                      <Button 
-                        variant="outline" 
-                        className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
+                      <Link 
+                        href="https://dexscreener.com/base/0x994deec2622fb511161c4489688cc895c5985fb1:moon"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <Image
-                          src="/assets/logos/dexscreener.png"
-                          alt="Dexscreener"
-                          width={16}
-                          height={16}
-                          className="mr-2"
-                        />
-                        View Chart
-                      </Button>
+                        <Button 
+                          variant="outline" 
+                          className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
+                        >
+                          <Image
+                            src="/assets/logos/dexscreener.png"
+                            alt="Dexscreener"
+                            width={16}
+                            height={16}
+                            className="mr-2"
+                          />
+                          View Chart
+                        </Button>
+                      </Link>
                     </div>
                     
                     <div className="flex gap-10 mt-4">
