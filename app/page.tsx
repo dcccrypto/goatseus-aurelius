@@ -168,27 +168,56 @@ export default function Component() {
         </div>
       </section>
 
-      {/* Contract Address Section */}
-      <section className="py-8 bg-purple-900/30">
+      {/* How to Buy GOTA Section */}
+      <section className="py-12 md:py-24 bg-purple-900/20">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <span className="text-white font-semibold">GOTA Contract Address:</span>
-            <div className="flex items-center bg-purple-800/50 rounded-lg px-4 py-2">
-              <span className="text-yellow-500 mr-2">{contractAddress}</span>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={copyToClipboard}
-                className="text-yellow-500 hover:text-yellow-400"
-              >
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              </Button>
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">How to Buy GOTA</h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-8 md:grid-cols-3">
+              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <DollarSign className="w-12 h-12 text-yellow-500 mb-4" />
+                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 1: Get SOL</h3>
+                  <p className="text-purple-100 mb-4">Purchase SOL from an exchange like Coinbase or Binance.</p>
+                  
+                </CardContent>
+              </Card>
+              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <Wallet className="w-12 h-12 text-yellow-500 mb-4" />
+                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 2: Set Up Wallet</h3>
+                  <p className="text-purple-100 mb-4">Create a Phantom wallet and transfer your SOL to it.</p>
+                  <Button 
+                    variant="outline" 
+                    className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600"
+                    onClick={() => window.open('https://phantom.app/', '_blank')}
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Get Phantom Wallet
+                  </Button>
+                </CardContent>
+              </Card>
+              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <ArrowRight className="w-12 h-12 text-yellow-500 mb-4" />
+                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 3: Swap for GOTA</h3>
+                  <p className="text-purple-100 mb-4">Use Jupiter Exchange to swap your SOL for GOTA tokens.</p>
+                  <Button 
+                    variant="outline" 
+                    className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600"
+                    onClick={() => window.open('https://jup.ag/swap/SOL-Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs', '_blank')}
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Go to Jupiter Exchange
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Base Chain Section */}
+      {/* Base Chain Section - Moved here */}
       <section className="py-12 bg-purple-900/20 relative">
         <div 
           className="absolute inset-0 z-0"
@@ -242,7 +271,7 @@ export default function Component() {
                     
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                       <Link 
-                        href="https://pancakeswap.finance/?chain=base&outputCurrency=0x994DeEC2622Fb511161c4489688Cc895c5985fB1"
+                        href="https://dexscreener.com/base/0x994deec2622fb511161c4489688cc895c5985fb1:moon"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -308,55 +337,6 @@ export default function Component() {
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* How to Buy GOTA Section */}
-      <section className="py-12 md:py-24 bg-purple-900/20">
-        <div className="container px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">How to Buy GOTA</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid gap-8 md:grid-cols-3">
-              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <DollarSign className="w-12 h-12 text-yellow-500 mb-4" />
-                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 1: Get SOL</h3>
-                  <p className="text-purple-100 mb-4">Purchase SOL from an exchange like Coinbase or Binance.</p>
-                  
-                </CardContent>
-              </Card>
-              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <Wallet className="w-12 h-12 text-yellow-500 mb-4" />
-                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 2: Set Up Wallet</h3>
-                  <p className="text-purple-100 mb-4">Create a Phantom wallet and transfer your SOL to it.</p>
-                  <Button 
-                    variant="outline" 
-                    className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600"
-                    onClick={() => window.open('https://phantom.app/', '_blank')}
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Get Phantom Wallet
-                  </Button>
-                </CardContent>
-              </Card>
-              <Card className="bg-purple-800/20 border-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <ArrowRight className="w-12 h-12 text-yellow-500 mb-4" />
-                  <h3 className="text-xl font-bold text-yellow-500 mb-2">Step 3: Swap for GOTA</h3>
-                  <p className="text-purple-100 mb-4">Use Jupiter Exchange to swap your SOL for GOTA tokens.</p>
-                  <Button 
-                    variant="outline" 
-                    className="mt-auto w-full bg-yellow-500 text-purple-900 hover:bg-yellow-600"
-                    onClick={() => window.open('https://jup.ag/swap/SOL-Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs', '_blank')}
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Go to Jupiter Exchange
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </section>
@@ -618,11 +598,11 @@ export default function Component() {
                 </div>
                 <div className="max-w-3xl">
                   <h4 className="text-xl font-semibold text-white mb-4">
-                    GOTA Token Emerges as a Pioneering Force in El Salvador's Cryptocurrency Landscape
+                    GOTA Token Emerges as a Pioneering Force in Solana Meme Coin Space
                   </h4>
                   <p className="text-purple-100 mb-6">
-                    A groundbreaking development in El Salvador's cryptocurrency sphere as GOTA token 
-                    introduces innovative blockchain solutions and community-driven initiatives.
+                    A groundbreaking development in solana meme coin space as GOTA token 
+                    promotes real degen behavior and community engagement.
                   </p>
                   <Button 
                     variant="outline" 
@@ -645,7 +625,7 @@ export default function Component() {
                   </Card>
                   <Card className="bg-purple-900/30 border-purple-700 p-4 flex items-center gap-2">
                     <span className="text-purple-200">Focus</span>
-                    <span className="text-yellow-500 font-semibold">El Salvador</span>
+                    <span className="text-yellow-500 font-semibold">Solana</span>
                   </Card>
                 </div>
               </div>
