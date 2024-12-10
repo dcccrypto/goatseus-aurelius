@@ -168,6 +168,30 @@ export default function Component() {
         </div>
       </section>
 
+      {/* Contract Address Section */}
+      <section className="py-8 bg-purple-900/30">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <span className="text-white font-semibold">GOTA Contract Address:</span>
+            <div className="flex items-center bg-purple-800/50 rounded-lg px-4 py-2">
+              <span className="text-[#F7B928] mr-2" id="contractAddress">Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs</span>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  navigator.clipboard.writeText("Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs")
+                  setCopied(true)
+                  setTimeout(() => setCopied(false), 2000)
+                }}
+                className="text-[#F7B928] hover:text-[#F7B928]/80"
+              >
+                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How to Buy GOTA Section */}
       <section className="py-12 md:py-24 bg-purple-900/20">
         <div className="container px-4 md:px-6">
@@ -213,130 +237,6 @@ export default function Component() {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Base Chain Section - Moved here */}
-      <section className="py-12 bg-purple-900/20 relative">
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url("/assets/basechainsectionbg.png")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            opacity: '0.8'
-          }}
-        />
-        
-        <div className="container px-4 md:px-6 relative z-10">
-          <div className="max-w-3xl mx-auto">
-            <Card className="bg-gradient-to-r from-purple-900/80 to-purple-800/80 border-2 border-[#F7B928]/50 shadow-lg shadow-purple-500/20 backdrop-blur-sm">
-              <CardContent className="p-8">
-                <div className="text-center space-y-6">
-                  <div className="inline-block px-4 py-1 rounded-full bg-[#F7B928]/20 border border-[#F7B928]/40 mb-2">
-                    <span className="text-[#F7B928] text-sm font-semibold">New Launch</span>
-                  </div>
-                  
-                  <h2 className="text-3xl md:text-4xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-[#F7B928] to-yellow-600">
-                    $GOTA on Base Chain
-                  </h2>
-                  
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 bg-purple-900/40 p-4 rounded-lg border border-purple-700/50">
-                    <span className="text-white font-semibold">Base Chain Contract:</span>
-                    <div className="flex items-center bg-purple-800/50 rounded-lg px-4 py-2 w-full sm:w-auto">
-                      <span className="text-[#F7B928] mr-2" id="baseContractAddress">0x994DeEC2622Fb511161c4489688Cc895c5985fB1</span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => {
-                          navigator.clipboard.writeText("0x123...789")
-                          setBaseCopied(true)
-                          setTimeout(() => setBaseCopied(false), 2000)
-                        }}
-                        className="text-[#F7B928] hover:text-[#F7B928]/80"
-                      >
-                        {baseCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="px-6 py-3 rounded-lg bg-purple-800/50 border border-purple-700 max-w-md">
-                      <p className="text-purple-200 text-sm">
-                        🚧 A dedicated website for $GOTA on Base is currently under development 🚧
-                      </p>
-                    </div>
-                    
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                      <Link 
-                        href="https://dexscreener.com/base/0x994deec2622fb511161c4489688cc895c5985fb1:moon"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group w-full sm:w-auto">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Buy on Base
-                        </Button>
-                      </Link>
-                      <Link 
-                        href="https://dexscreener.com/base/0x994deec2622fb511161c4489688cc895c5985fb1:moon"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button 
-                          variant="outline" 
-                          className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
-                        >
-                          <Image
-                            src="/assets/logos/dexscreener.png"
-                            alt="Dexscreener"
-                            width={16}
-                            height={16}
-                            className="mr-2"
-                          />
-                          View Chart
-                        </Button>
-                      </Link>
-                    </div>
-                    
-                    <div className="flex gap-10 mt-4">
-                      <Link href="#" className="transform hover:scale-110 transition-transform">
-                        <Image
-                          src="/assets/logos/x.png"
-                          alt="X (Twitter)"
-                          width={36}
-                          height={36}
-                          className="opacity-100"
-                        />
-                        <span className="sr-only">X (Twitter)</span>
-                      </Link>
-                      <Link href="#" className="transform hover:scale-110 transition-transform">
-                        <Image
-                          src="/assets/logos/telegram.png"
-                          alt="Telegram"
-                          width={36}
-                          height={36}
-                          className="opacity-100"
-                        />
-                        <span className="sr-only">Telegram</span>
-                      </Link>
-                      <Link href="#" className="transform hover:scale-110 transition-transform">
-                        <Image
-                          src="/assets/logos/tiktok.png"
-                          alt="TikTok"
-                          width={36}
-                          height={36}
-                          className="opacity-100"
-                        />
-                        <span className="sr-only">TikTok</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
@@ -576,6 +476,139 @@ export default function Component() {
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Base Chain Section */}
+      <section className="py-12 bg-purple-900/20">
+        <div className="container px-4 md:px-6">
+          <div className="relative overflow-hidden rounded-2xl">
+            <div 
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundImage: 'url("/assets/basechainsectionbg.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                opacity: '0.9'
+              }}
+            />
+            
+            <div className="relative z-10 p-8 md:p-12 backdrop-blur-sm bg-purple-900/40">
+              <div className="mx-auto max-w-3xl text-center">
+                <h2 className="mb-6 text-3xl md:text-4xl font-bold text-white">GOTA on Base Chain</h2>
+                
+                {/* Base Contract Address */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                  <span className="text-white font-semibold">Base Contract Address:</span>
+                  <div className="flex items-center bg-purple-800/50 rounded-lg px-4 py-2">
+                    <span className="text-[#F7B928] mr-2">0x994DeEC2622Fb511161c4489688Cc895c5985fB1</span>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => {
+                        navigator.clipboard.writeText("0x994DeEC2622Fb511161c4489688Cc895c5985fB1")
+                        setCopied(true)
+                        setTimeout(() => setCopied(false), 2000)
+                      }}
+                      className="text-[#F7B928] hover:text-[#F7B928]/80"
+                    >
+                      {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center gap-4">
+                  <div className="px-6 py-3 rounded-lg bg-purple-800/50 border border-purple-700 max-w-md">
+                    <p className="text-purple-200 text-sm">
+                      🚧 A dedicated website for $GOTA on Base is currently under development 🚧
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Link 
+                      href="https://pancakeswap.finance/?chain=base&outputCurrency=0x994DeEC2622Fb511161c4489688Cc895c5985fB1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="bg-[#F7B928] hover:bg-[#F7B928]/90 text-white transition-all hover:scale-105 group w-full sm:w-auto">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Buy on Base
+                      </Button>
+                    </Link>
+                    <Link 
+                      href="https://dexscreener.com/base/0x994deec2622fb511161c4489688cc895c5985fb1:moon"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button 
+                        variant="outline" 
+                        className="bg-white/10 text-white hover:bg-white/20 border-white/20 transition-all hover:scale-105 relative group overflow-hidden w-full sm:w-auto backdrop-blur-sm"
+                      >
+                        <Image
+                          src="/assets/logos/dexscreener.png"
+                          alt="Dexscreener"
+                          width={16}
+                          height={16}
+                          className="mr-2"
+                        />
+                        View Chart
+                      </Button>
+                    </Link>
+                  </div>
+
+                  {/* Social Icons */}
+                  <div className="flex justify-center gap-6 mt-6">
+                    <Link 
+                      href="https://twitter.com/goatseusol" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-110"
+                    >
+                      <Image
+                        src="/assets/logos/x.png"
+                        alt="X (Twitter)"
+                        width={28}
+                        height={28}
+                        className="opacity-80 hover:opacity-100"
+                      />
+                      <span className="sr-only">X (Twitter)</span>
+                    </Link>
+                    <Link 
+                      href="https://t.me/goatseusol" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-110"
+                    >
+                      <Image
+                        src="/assets/logos/telegram.png"
+                        alt="Telegram"
+                        width={28}
+                        height={28}
+                        className="opacity-80 hover:opacity-100"
+                      />
+                      <span className="sr-only">Telegram</span>
+                    </Link>
+                    <Link 
+                      href="https://www.tiktok.com/@goatseusol" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-110"
+                    >
+                      <Image
+                        src="/assets/logos/tiktok.png"
+                        alt="TikTok"
+                        width={28}
+                        height={28}
+                        className="opacity-80 hover:opacity-100"
+                      />
+                      <span className="sr-only">TikTok</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
