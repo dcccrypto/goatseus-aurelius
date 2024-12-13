@@ -39,7 +39,7 @@ export async function GET(request: Request) {
   }
 
   // Create URLs using the insights endpoint format
-  const timeseriesUrl = `https://vercel.com/api/web/insights/stats/pageviews?${new URLSearchParams(baseParams)}`
+  const timeseriesUrl = `https://vercel.com/api/web/insights/stats/path?${new URLSearchParams(baseParams)}`
   const referrersUrl = `https://vercel.com/api/web/insights/stats/referrer?${new URLSearchParams(baseParams)}`
   const countriesUrl = `https://vercel.com/api/web/insights/stats/country?${new URLSearchParams(baseParams)}`
 
