@@ -234,7 +234,7 @@ export default function AdminPage() {
                       axisLine={{ stroke: '#6D28D9' }}
                       tickLine={{ stroke: '#6D28D9' }}
                       width={40}
-                      tickFormatter={(value) => Math.round(value)}
+                      tickFormatter={(value) => Math.round(value).toString()}
                     />
                     <Tooltip 
                       contentStyle={{ 
