@@ -92,11 +92,19 @@ export async function GET(request: Request) {
     // Format the response data based on the actual response structure
     const responseData = {
       timeseries: {
-        data: timeseriesData.data.map((entry: any) => ({
-          key: entry.date || entry.timestamp || entry.key,
-          total: entry.pageViews || entry.total || 0,
-          devices: entry.uniqueVisitors || entry.devices || 0
-        }))
+        data: timeseriesData.data.map((entry: any) => {
+          // Ensure we have a valid date string
+          let dateStr = entry.date || entry.timestamp || entry.key;
+          if (!dateStr.includes('T')) {
+            dateStr = `${dateStr}T00:00:00.000Z`;
+          }
+          
+          return {
+            key: dateStr,
+            total: entry.pageViews || entry.total || 0,
+            devices: entry.uniqueVisitors || entry.devices || 0
+          };
+        }).sort((a: any, b: any) => new Date(a.key).getTime() - new Date(b.key).getTime()) // Sort by date
       },
       referrers: {
         data: referrersData.data.map((entry: any) => ({

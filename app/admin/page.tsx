@@ -119,7 +119,30 @@ export default function AdminPage() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-2xl font-bold text-white">GOTA Analytics Dashboard</h1>
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
+            <ButtonGroup className="bg-purple-900/50">
+              <Button
+                onClick={() => handleTimeRangeSelect(7)}
+                variant="ghost"
+                className="text-white hover:bg-purple-700/30"
+              >
+                7D
+              </Button>
+              <Button
+                onClick={() => handleTimeRangeSelect(30)}
+                variant="ghost"
+                className="text-white hover:bg-purple-700/30"
+              >
+                1M
+              </Button>
+              <Button
+                onClick={() => handleTimeRangeSelect(365)}
+                variant="ghost"
+                className="text-white hover:bg-purple-700/30"
+              >
+                1Y
+              </Button>
+            </ButtonGroup>
             <div className="flex gap-2">
               <Input
                 type="date"
@@ -185,13 +208,20 @@ export default function AdminPage() {
                       dataKey="key" 
                       stroke="#E9D5FF"
                       tickFormatter={(value) => {
+                        if (!value) return '';
                         try {
-                          return new Date(value).toLocaleDateString('en-US', {
+                          const date = new Date(value);
+                          if (isNaN(date.getTime())) {
+                            console.warn('Invalid date:', value);
+                            return 'Invalid';
+                          }
+                          return new Intl.DateTimeFormat('en-US', {
                             month: 'short',
                             day: 'numeric'
-                          })
+                          }).format(date);
                         } catch (e) {
-                          return value
+                          console.error('Date formatting error:', e);
+                          return 'Error';
                         }
                       }}
                     />
@@ -203,6 +233,19 @@ export default function AdminPage() {
                         borderRadius: '8px'
                       }}
                       labelStyle={{ color: '#E9D5FF' }}
+                      labelFormatter={(value) => {
+                        if (!value) return '';
+                        try {
+                          const date = new Date(value);
+                          return new Intl.DateTimeFormat('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                          }).format(date);
+                        } catch (e) {
+                          return value;
+                        }
+                      }}
                     />
                     <Legend />
                     <Line 
