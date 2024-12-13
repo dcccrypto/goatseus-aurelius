@@ -202,65 +202,89 @@ export default function AdminPage() {
               <h3 className="text-lg font-semibold text-white mb-4">Traffic Overview</h3>
               <div className="h-[400px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={analyticsData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#4B2D82" />
+                  <LineChart 
+                    data={analyticsData}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                  >
+                    <CartesianGrid 
+                      strokeDasharray="3 3" 
+                      stroke="#4B2D82" 
+                      vertical={false}
+                    />
                     <XAxis 
                       dataKey="key" 
                       stroke="#E9D5FF"
                       tickFormatter={(value) => {
-                        if (!value) return '';
-                        try {
-                          const date = new Date(value);
-                          if (isNaN(date.getTime())) {
-                            console.warn('Invalid date:', value);
-                            return 'Invalid';
-                          }
-                          return new Intl.DateTimeFormat('en-US', {
-                            month: 'short',
-                            day: 'numeric'
-                          }).format(date);
-                        } catch (e) {
-                          console.error('Date formatting error:', e);
-                          return 'Error';
-                        }
+                        const date = new Date(value);
+                        return new Intl.DateTimeFormat('en-US', {
+                          month: 'short',
+                          day: 'numeric'
+                        }).format(date);
                       }}
+                      tick={{ fontSize: 12 }}
+                      axisLine={{ stroke: '#6D28D9' }}
+                      tickLine={{ stroke: '#6D28D9' }}
                     />
-                    <YAxis stroke="#E9D5FF" />
+                    <YAxis 
+                      stroke="#E9D5FF"
+                      tick={{ fontSize: 12 }}
+                      axisLine={{ stroke: '#6D28D9' }}
+                      tickLine={{ stroke: '#6D28D9' }}
+                      width={60}
+                    />
                     <Tooltip 
                       contentStyle={{ 
                         backgroundColor: '#4B2D82', 
                         border: '1px solid #6D28D9',
-                        borderRadius: '8px'
+                        borderRadius: '8px',
+                        padding: '8px 12px'
                       }}
-                      labelStyle={{ color: '#E9D5FF' }}
+                      itemStyle={{ color: '#E9D5FF', fontSize: '12px' }}
+                      labelStyle={{ color: '#E9D5FF', fontSize: '14px', fontWeight: 'bold', marginBottom: '4px' }}
                       labelFormatter={(value) => {
-                        if (!value) return '';
-                        try {
-                          const date = new Date(value);
-                          return new Intl.DateTimeFormat('en-US', {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric'
-                          }).format(date);
-                        } catch (e) {
-                          return value;
-                        }
+                        const date = new Date(value);
+                        return new Intl.DateTimeFormat('en-US', {
+                          weekday: 'short',
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric'
+                        }).format(date);
                       }}
+                      cursor={{ stroke: '#6D28D9', strokeWidth: 1 }}
                     />
-                    <Legend />
+                    <Legend 
+                      verticalAlign="top" 
+                      height={36}
+                      iconType="circle"
+                      iconSize={8}
+                      wrapperStyle={{
+                        paddingBottom: '20px',
+                      }}
+                      formatter={(value) => (
+                        <span style={{ color: '#E9D5FF', fontSize: '12px' }}>{value}</span>
+                      )}
+                    />
                     <Line 
                       type="monotone" 
                       dataKey="total" 
                       stroke="#F7B928" 
                       name="Total Visits"
-                      strokeWidth={2}
+                      strokeWidth={2.5}
+                      dot={false}
+                      activeDot={{ r: 6, fill: '#F7B928', stroke: '#4B2D82', strokeWidth: 2 }}
+                      animationDuration={1500}
+                      animationEasing="ease-in-out"
                     />
                     <Line 
                       type="monotone" 
                       dataKey="devices" 
                       stroke="#10B981" 
                       name="Unique Devices"
-                      strokeWidth={2}
+                      strokeWidth={2.5}
+                      dot={false}
+                      activeDot={{ r: 6, fill: '#10B981', stroke: '#4B2D82', strokeWidth: 2 }}
+                      animationDuration={1500}
+                      animationEasing="ease-in-out"
                     />
                   </LineChart>
                 </ResponsiveContainer>

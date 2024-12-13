@@ -92,19 +92,21 @@ export async function GET(request: Request) {
     // Format the response data based on the actual response structure
     const responseData = {
       timeseries: {
-        data: timeseriesData.data.map((entry: any) => {
-          // Ensure we have a valid date string
-          let dateStr = entry.date || entry.timestamp || entry.key;
-          if (!dateStr.includes('T')) {
-            dateStr = `${dateStr}T00:00:00.000Z`;
-          }
-          
-          return {
-            key: dateStr,
-            total: entry.pageViews || entry.total || 0,
-            devices: entry.uniqueVisitors || entry.devices || 0
-          };
-        }).sort((a: any, b: any) => new Date(a.key).getTime() - new Date(b.key).getTime()) // Sort by date
+        data: timeseriesData.data
+          .map((entry: any) => {
+            const date = new Date(entry.date || entry.timestamp || entry.key);
+            // Skip invalid dates
+            if (isNaN(date.getTime())) {
+              return null;
+            }
+            return {
+              key: date.toISOString(), // Always use ISO string format
+              total: entry.pageViews || entry.total || 0,
+              devices: entry.uniqueVisitors || entry.devices || 0
+            };
+          })
+          .filter((entry: any) => entry !== null) // Remove invalid entries
+          .sort((a: any, b: any) => new Date(a.key).getTime() - new Date(b.key).getTime())
       },
       referrers: {
         data: referrersData.data.map((entry: any) => ({
