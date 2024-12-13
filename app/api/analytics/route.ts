@@ -38,10 +38,10 @@ export async function GET(request: Request) {
     teamId: process.env.VERCEL_TEAM_ID
   }
 
-  // Create URLs using the correct endpoints
-  const timeseriesUrl = `https://vercel.com/api/web/insights/stats?type=path&${new URLSearchParams(baseParams)}`
-  const referrersUrl = `https://vercel.com/api/web/insights/stats?type=referrer&${new URLSearchParams(baseParams)}`
-  const countriesUrl = `https://vercel.com/api/web/insights/stats?type=country&${new URLSearchParams(baseParams)}`
+  // Create URLs using the insights endpoint format
+  const timeseriesUrl = `https://vercel.com/api/web/insights/stats/pageviews?${new URLSearchParams(baseParams)}`
+  const referrersUrl = `https://vercel.com/api/web/insights/stats/referrer?${new URLSearchParams(baseParams)}`
+  const countriesUrl = `https://vercel.com/api/web/insights/stats/country?${new URLSearchParams(baseParams)}`
 
   try {
     const headers = {
@@ -93,23 +93,23 @@ export async function GET(request: Request) {
     const responseData = {
       timeseries: {
         data: timeseriesData.data.map((entry: any) => ({
-          key: entry.key || entry.timestamp,
-          total: entry.total || 0,
-          devices: entry.devices || 0
+          key: entry.date || entry.timestamp || entry.key,
+          total: entry.pageViews || entry.total || 0,
+          devices: entry.uniqueVisitors || entry.devices || 0
         }))
       },
       referrers: {
         data: referrersData.data.map((entry: any) => ({
-          referrer: entry.key || 'Direct',
-          total: entry.total || 0,
-          devices: entry.devices || 0
+          referrer: entry.referrer || entry.key || 'Direct',
+          total: entry.pageViews || entry.total || 0,
+          devices: entry.uniqueVisitors || entry.devices || 0
         }))
       },
       countries: {
         data: countriesData.data.map((entry: any) => ({
-          country: entry.key || 'Unknown',
-          total: entry.total || 0,
-          devices: entry.devices || 0
+          country: entry.country || entry.key || 'Unknown',
+          total: entry.pageViews || entry.total || 0,
+          devices: entry.uniqueVisitors || entry.devices || 0
         }))
       }
     }
