@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Globe, Link as LinkIcon } from "lucide-react"
+import { ButtonGroup } from "@/components/ui/button-group"
 
 interface AnalyticsData {
   key: string
@@ -33,7 +34,7 @@ export default function AdminPage() {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData[]>([])
   const [loading, setLoading] = useState(false)
   const [dateRange, setDateRange] = useState({
-    from: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 7 days ago
+    from: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
     to: new Date().toISOString().split('T')[0]
   })
   const [referrersData, setReferrersData] = useState<ReferrerData[]>([])
@@ -72,6 +73,15 @@ export default function AdminPage() {
     } else {
       setError("Invalid password")
     }
+  }
+
+  const handleTimeRangeSelect = (days: number) => {
+    const to = new Date()
+    const from = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
+    setDateRange({
+      from: from.toISOString().split('T')[0],
+      to: to.toISOString().split('T')[0]
+    })
   }
 
   if (!isAuthenticated) {
@@ -174,7 +184,16 @@ export default function AdminPage() {
                     <XAxis 
                       dataKey="key" 
                       stroke="#E9D5FF"
-                      tickFormatter={(value) => new Date(value).toLocaleDateString()}
+                      tickFormatter={(value) => {
+                        try {
+                          return new Date(value).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric'
+                          })
+                        } catch (e) {
+                          return value
+                        }
+                      }}
                     />
                     <YAxis stroke="#E9D5FF" />
                     <Tooltip 
