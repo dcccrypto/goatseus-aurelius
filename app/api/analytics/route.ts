@@ -38,16 +38,10 @@ export async function GET(request: Request) {
     teamId: process.env.VERCEL_TEAM_ID
   }
 
-  // Create URLs using the insights endpoint
-  const timeseriesUrl = `https://vercel.com/api/web/insights/stats/pageviews?${new URLSearchParams(baseParams)}`
-  const referrersUrl = `https://vercel.com/api/web/insights/stats/referrer?${new URLSearchParams(baseParams)}`
-  const countriesUrl = `https://vercel.com/api/web/insights/stats/country?${new URLSearchParams(baseParams)}`
-
-  console.log('Fetching analytics with URLs:', {
-    timeseriesUrl: timeseriesUrl.replace(process.env.VERCEL_API_TOKEN!, 'REDACTED'),
-    from,
-    to
-  })
+  // Create URLs using the correct endpoints
+  const timeseriesUrl = `https://vercel.com/api/web/insights/stats?type=path&${new URLSearchParams(baseParams)}`
+  const referrersUrl = `https://vercel.com/api/web/insights/stats?type=referrer&${new URLSearchParams(baseParams)}`
+  const countriesUrl = `https://vercel.com/api/web/insights/stats?type=country&${new URLSearchParams(baseParams)}`
 
   try {
     const headers = {
@@ -82,17 +76,6 @@ export async function GET(request: Request) {
       }
 
       console.error('API Response errors:', responses)
-
-      // Handle rate limiting
-      if (responses.timeseries.status === 429 || responses.referrers.status === 429 || responses.countries.status === 429) {
-        return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
-      }
-
-      // Handle authentication errors
-      if (responses.timeseries.status === 401 || responses.referrers.status === 401 || responses.countries.status === 401) {
-        return NextResponse.json({ error: 'Authentication failed' }, { status: 401 })
-      }
-
       return NextResponse.json({ 
         error: 'Failed to fetch analytics data',
         details: responses
@@ -106,27 +89,27 @@ export async function GET(request: Request) {
       countriesResponse.json()
     ])
 
-    // Format the response data
+    // Format the response data based on the actual response structure
     const responseData = {
       timeseries: {
-        data: timeseriesData.map((entry: any) => ({
-          key: entry.date || entry.timestamp,
-          total: entry.pageViews || entry.total || 0,
-          devices: entry.uniqueVisitors || entry.devices || 0
+        data: timeseriesData.data.map((entry: any) => ({
+          key: entry.key || entry.timestamp,
+          total: entry.total || 0,
+          devices: entry.devices || 0
         }))
       },
       referrers: {
-        data: referrersData.map((entry: any) => ({
-          referrer: entry.referrer || 'Direct',
-          total: entry.pageViews || entry.total || 0,
-          devices: entry.uniqueVisitors || entry.devices || 0
+        data: referrersData.data.map((entry: any) => ({
+          referrer: entry.key || 'Direct',
+          total: entry.total || 0,
+          devices: entry.devices || 0
         }))
       },
       countries: {
-        data: countriesData.map((entry: any) => ({
-          country: entry.country,
-          total: entry.pageViews || entry.total || 0,
-          devices: entry.uniqueVisitors || entry.devices || 0
+        data: countriesData.data.map((entry: any) => ({
+          country: entry.key || 'Unknown',
+          total: entry.total || 0,
+          devices: entry.devices || 0
         }))
       }
     }
