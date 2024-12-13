@@ -27,26 +27,32 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Missing required environment variables' }, { status: 500 })
   }
 
-  // Updated API endpoints with proper encoding
-  const baseParams = new URLSearchParams({
+  // Base parameters for all requests
+  const baseParams = {
     environment: 'production',
     filter: '{}',
     from: `${from}T00:00:00.000Z`,
     to: `${to}T23:59:59.999Z`,
+    limit: '250',
     projectId: process.env.VERCEL_PROJECT_ID,
-    teamId: process.env.VERCEL_TEAM_ID,
-    tz: 'UTC'
-  }).toString()
+    teamId: process.env.VERCEL_TEAM_ID
+  }
 
-  const timeseriesUrl = `https://api.vercel.com/v1/web-analytics/stats/timeseries?${baseParams}`
-  const referrersUrl = `https://api.vercel.com/v1/web-analytics/stats/referrers?${baseParams}`
-  const countriesUrl = `https://api.vercel.com/v1/web-analytics/stats/countries?${baseParams}`
+  // Create URLs using the insights endpoint
+  const timeseriesUrl = `https://vercel.com/api/web/insights/stats/pageviews?${new URLSearchParams(baseParams)}`
+  const referrersUrl = `https://vercel.com/api/web/insights/stats/referrer?${new URLSearchParams(baseParams)}`
+  const countriesUrl = `https://vercel.com/api/web/insights/stats/country?${new URLSearchParams(baseParams)}`
+
+  console.log('Fetching analytics with URLs:', {
+    timeseriesUrl: timeseriesUrl.replace(process.env.VERCEL_API_TOKEN!, 'REDACTED'),
+    from,
+    to
+  })
 
   try {
     const headers = {
       'Authorization': `Bearer ${process.env.VERCEL_API_TOKEN}`,
-      'Content-Type': 'application/json',
-      'User-Agent': 'GOTA-Analytics/1.0'
+      'Content-Type': 'application/json'
     }
 
     const [timeseriesResponse, referrersResponse, countriesResponse] = await Promise.all([
@@ -55,39 +61,74 @@ export async function GET(request: Request) {
       fetch(countriesUrl, { headers })
     ])
 
-    // Check for specific error status codes
+    // Enhanced error handling with response body logging
     if (!timeseriesResponse.ok || !referrersResponse.ok || !countriesResponse.ok) {
       const responses = {
-        timeseries: { status: timeseriesResponse.status, statusText: timeseriesResponse.statusText },
-        referrers: { status: referrersResponse.status, statusText: referrersResponse.statusText },
-        countries: { status: countriesResponse.status, statusText: countriesResponse.statusText }
-      }
-
-      // Handle specific status codes
-      if (responses.timeseries.status === 508 || responses.referrers.status === 508 || responses.countries.status === 508) {
-        console.error('Infinite loop detected in Vercel Analytics API:', responses)
-        return NextResponse.json({ error: 'Analytics service temporarily unavailable' }, { status: 503 })
-      }
-
-      if (responses.timeseries.status === 401 || responses.referrers.status === 401 || responses.countries.status === 401) {
-        console.error('Authentication failed with Vercel Analytics API:', responses)
-        return NextResponse.json({ error: 'Analytics authentication failed' }, { status: 401 })
+        timeseries: { 
+          status: timeseriesResponse.status, 
+          statusText: timeseriesResponse.statusText,
+          body: await timeseriesResponse.text()
+        },
+        referrers: { 
+          status: referrersResponse.status, 
+          statusText: referrersResponse.statusText,
+          body: await referrersResponse.text()
+        },
+        countries: { 
+          status: countriesResponse.status, 
+          statusText: countriesResponse.statusText,
+          body: await countriesResponse.text()
+        }
       }
 
       console.error('API Response errors:', responses)
-      return NextResponse.json({ error: 'Failed to fetch analytics data' }, { status: 500 })
+
+      // Handle rate limiting
+      if (responses.timeseries.status === 429 || responses.referrers.status === 429 || responses.countries.status === 429) {
+        return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
+      }
+
+      // Handle authentication errors
+      if (responses.timeseries.status === 401 || responses.referrers.status === 401 || responses.countries.status === 401) {
+        return NextResponse.json({ error: 'Authentication failed' }, { status: 401 })
+      }
+
+      return NextResponse.json({ 
+        error: 'Failed to fetch analytics data',
+        details: responses
+      }, { status: 500 })
     }
 
-    const [timeseries, referrers, countries] = await Promise.all([
+    // Transform the data to match our expected format
+    const [timeseriesData, referrersData, countriesData] = await Promise.all([
       timeseriesResponse.json(),
       referrersResponse.json(),
       countriesResponse.json()
     ])
 
+    // Format the response data
     const responseData = {
-      timeseries,
-      referrers,
-      countries
+      timeseries: {
+        data: timeseriesData.map((entry: any) => ({
+          key: entry.date || entry.timestamp,
+          total: entry.pageViews || entry.total || 0,
+          devices: entry.uniqueVisitors || entry.devices || 0
+        }))
+      },
+      referrers: {
+        data: referrersData.map((entry: any) => ({
+          referrer: entry.referrer || 'Direct',
+          total: entry.pageViews || entry.total || 0,
+          devices: entry.uniqueVisitors || entry.devices || 0
+        }))
+      },
+      countries: {
+        data: countriesData.map((entry: any) => ({
+          country: entry.country,
+          total: entry.pageViews || entry.total || 0,
+          devices: entry.uniqueVisitors || entry.devices || 0
+        }))
+      }
     }
 
     // Cache the successful response
