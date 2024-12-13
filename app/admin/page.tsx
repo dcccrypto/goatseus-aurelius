@@ -48,6 +48,7 @@ export default function AdminPage() {
       setLoading(true)
       const response = await fetch(`/api/analytics?from=${dateRange.from}&to=${dateRange.to}`)
       const data = await response.json()
+      console.log('Analytics data:', data.timeseries.data)
       setAnalyticsData(data.timeseries.data)
       setReferrersData(data.referrers.data)
       setCountriesData(data.countries.data)
@@ -200,11 +201,11 @@ export default function AdminPage() {
           <Card className="bg-purple-800/20 border-purple-700">
             <CardContent className="p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Traffic Overview</h3>
-              <div className="h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
+              <div className="h-[400px] w-full">
+                <ResponsiveContainer>
                   <LineChart 
                     data={analyticsData}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
                   >
                     <CartesianGrid 
                       strokeDasharray="3 3" 
@@ -215,22 +216,25 @@ export default function AdminPage() {
                       dataKey="key" 
                       stroke="#E9D5FF"
                       tickFormatter={(value) => {
+                        if (!value) return '';
                         const date = new Date(value);
                         return new Intl.DateTimeFormat('en-US', {
                           month: 'short',
                           day: 'numeric'
                         }).format(date);
                       }}
-                      tick={{ fontSize: 12 }}
+                      tick={{ fill: '#E9D5FF', fontSize: 12 }}
                       axisLine={{ stroke: '#6D28D9' }}
                       tickLine={{ stroke: '#6D28D9' }}
+                      minTickGap={30}
                     />
                     <YAxis 
                       stroke="#E9D5FF"
-                      tick={{ fontSize: 12 }}
+                      tick={{ fill: '#E9D5FF', fontSize: 12 }}
                       axisLine={{ stroke: '#6D28D9' }}
                       tickLine={{ stroke: '#6D28D9' }}
-                      width={60}
+                      width={40}
+                      tickFormatter={(value) => Math.round(value)}
                     />
                     <Tooltip 
                       contentStyle={{ 
@@ -242,33 +246,31 @@ export default function AdminPage() {
                       itemStyle={{ color: '#E9D5FF', fontSize: '12px' }}
                       labelStyle={{ color: '#E9D5FF', fontSize: '14px', fontWeight: 'bold', marginBottom: '4px' }}
                       labelFormatter={(value) => {
+                        if (!value) return '';
                         const date = new Date(value);
                         return new Intl.DateTimeFormat('en-US', {
                           weekday: 'short',
                           month: 'short',
-                          day: 'numeric',
-                          year: 'numeric'
+                          day: 'numeric'
                         }).format(date);
                       }}
                       cursor={{ stroke: '#6D28D9', strokeWidth: 1 }}
                     />
                     <Legend 
-                      verticalAlign="top" 
+                      verticalAlign="top"
                       height={36}
                       iconType="circle"
                       iconSize={8}
-                      wrapperStyle={{
-                        paddingBottom: '20px',
-                      }}
                       formatter={(value) => (
-                        <span style={{ color: '#E9D5FF', fontSize: '12px' }}>{value}</span>
+                        <span style={{ color: '#E9D5FF', fontSize: '12px' }}>
+                          {value === 'total' ? 'Total Visits' : 'Unique Devices'}
+                        </span>
                       )}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="total" 
                       stroke="#F7B928" 
-                      name="Total Visits"
                       strokeWidth={2.5}
                       dot={false}
                       activeDot={{ r: 6, fill: '#F7B928', stroke: '#4B2D82', strokeWidth: 2 }}
@@ -279,7 +281,6 @@ export default function AdminPage() {
                       type="monotone" 
                       dataKey="devices" 
                       stroke="#10B981" 
-                      name="Unique Devices"
                       strokeWidth={2.5}
                       dot={false}
                       activeDot={{ r: 6, fill: '#10B981', stroke: '#4B2D82', strokeWidth: 2 }}
