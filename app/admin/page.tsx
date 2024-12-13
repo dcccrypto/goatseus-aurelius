@@ -5,9 +5,23 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Globe, Link as LinkIcon } from "lucide-react"
 
 interface AnalyticsData {
   key: string
+  total: number
+  devices: number
+}
+
+interface ReferrerData {
+  referrer: string
+  total: number
+  devices: number
+}
+
+interface CountryData {
+  country: string
   total: number
   devices: number
 }
@@ -22,6 +36,8 @@ export default function AdminPage() {
     from: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 7 days ago
     to: new Date().toISOString().split('T')[0]
   })
+  const [referrersData, setReferrersData] = useState<ReferrerData[]>([])
+  const [countriesData, setCountriesData] = useState<CountryData[]>([])
 
   // This should be moved to .env.local in production
   const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "your_secure_password_here"
@@ -31,7 +47,9 @@ export default function AdminPage() {
       setLoading(true)
       const response = await fetch(`/api/analytics?from=${dateRange.from}&to=${dateRange.to}`)
       const data = await response.json()
-      setAnalyticsData(data.data)
+      setAnalyticsData(data.timeseries.data)
+      setReferrersData(data.referrers.data)
+      setCountriesData(data.countries.data)
     } catch (err) {
       console.error('Error fetching analytics:', err)
       setError('Failed to fetch analytics data')
@@ -187,6 +205,73 @@ export default function AdminPage() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Add after the chart */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            {/* Top Referrers */}
+            <Card className="bg-purple-800/20 border-purple-700">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <LinkIcon className="h-5 w-5 text-yellow-500" />
+                  <h3 className="text-lg font-semibold text-white">Top Referrers</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="text-purple-200">Source</TableHead>
+                        <TableHead className="text-purple-200 text-right">Visits</TableHead>
+                        <TableHead className="text-purple-200 text-right">Devices</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {referrersData.slice(0, 5).map((referrer, index) => (
+                        <TableRow key={index}>
+                          <TableCell className="text-white">
+                            {referrer.referrer || 'Direct'}
+                          </TableCell>
+                          <TableCell className="text-white text-right">{referrer.total}</TableCell>
+                          <TableCell className="text-white text-right">{referrer.devices}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Top Countries */}
+            <Card className="bg-purple-800/20 border-purple-700">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <Globe className="h-5 w-5 text-yellow-500" />
+                  <h3 className="text-lg font-semibold text-white">Top Countries</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="text-purple-200">Country</TableHead>
+                        <TableHead className="text-purple-200 text-right">Visits</TableHead>
+                        <TableHead className="text-purple-200 text-right">Devices</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {countriesData.slice(0, 5).map((country, index) => (
+                        <TableRow key={index}>
+                          <TableCell className="text-white">
+                            {country.country}
+                          </TableCell>
+                          <TableCell className="text-white text-right">{country.total}</TableCell>
+                          <TableCell className="text-white text-right">{country.devices}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
